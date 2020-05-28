@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
-project(SistemaBibilioteca)
+project(SistemaBiblioteca)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(SistemaBibilioteca main.cpp)
+add_executable(SistemaBiblioteca main.cpp)
