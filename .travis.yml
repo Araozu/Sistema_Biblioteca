@@ -1,5 +1,5 @@
 language: cpp
 compiler:
   - gcc
-script: mkdir build && cmake --build ./build --target SistemaBiblioteca -- -j 4
+script: pwd && ls && cmake .
 
