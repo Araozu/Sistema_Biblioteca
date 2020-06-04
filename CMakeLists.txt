@@ -3,4 +3,4 @@ project(SistemaBiblioteca)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(SistemaBiblioteca main.cpp)
+add_executable(SistemaBiblioteca main.cpp libro.cpp libro.h Persona/persona.cpp Persona/persona.h Persona/autor.cpp Persona/autor.h prestamo.cpp prestamo.h almacen.cpp almacen.h sistema.cpp sistema.h Persona/cliente.cpp Persona/cliente.h)
