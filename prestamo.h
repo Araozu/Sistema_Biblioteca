@@ -14,6 +14,26 @@ private:
     std::string fechaDevolucion;
     bool devuelto;
 
+public:
+    Prestamo(int codigoLibro, int dniCliente, std::string fechaPrestamo, std::string fechaDevolucion);
+
+    int getCodigoLibro() const;
+
+    void setCodigoLibro(int codigoLibro);
+
+    int getDniCliente() const;
+
+    void setDniCliente(int dniCliente);
+
+    const std::string &getFechaPrestamo() const;
+
+    bool isDevuelto() const;
+
+    void setFechaPrestamo(const std::string &fechaPrestamo);
+
+    const std::string &getFechaDevolucion() const;
+
+    void setFechaDevolucion(const std::string &fechaDevolucion);
 };
 
 
