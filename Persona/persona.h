@@ -7,17 +7,35 @@
 #include <iostream>
 
 class Persona {
-private:
-    std::string primerNombre;
-    std::string segundoNombre;
-    std::string apellidoPaterno;
-    std::string apellidoMaterno;
-    int dni;
-    int telefono;
+    private:
+        std::string nombres;
+        std::string apellidos;
+        int dni;
+        int telefono;
+        std::string direccion;
+    public:
+        Persona(std::string _nombres,std::string _apellidos,int _dni,int _telefono, std::string _direccion,);
 
-public:
+        std::string getNombres() const;
 
-};
+        void setNombres(std::string nombres);
 
+        std::string getApellidos() const;
+
+        void setApellidos(std::string apellidos);
+
+        int getDni() const;
+
+        void setDni(int dni);
+
+        int getTelefono() const;
+
+        void setTelefono(int telefono);
+
+        std::string getDireccion() const;
+
+        void setDireccion(std::string direccion);
+
+    };
 
 #endif //SISTEMABIBLIOTECA_PERSONA_H
