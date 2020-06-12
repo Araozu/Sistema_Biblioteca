@@ -16,7 +16,7 @@ private:
     std::string tema;  // Biologia/Matematica/etc
 
 public:
-    Libro(int codigo, std::string nombre, Autor autor, std::string fechaPublicacion, std::string tema);
+    Libro(int codigo_, std::string nombre_, Autor autor_, std::string fechaPublicacion_, std::string tema_);
     
     int getCodigo() const;
     
