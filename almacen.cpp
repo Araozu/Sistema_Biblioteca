@@ -14,11 +14,11 @@ int Almacen::getCantidadLibros()const{
 return cantidadLibros;
 
 }
-void Almacen :: setCantidadLibros(int cantidadLibros){
-	Almacen ::cantidadLibros=cantidadLibros;
+void Almacen::setCantidadLibros(int cantidadLibros){
+	Almacen::cantidadLibros=cantidadLibros;
 }
 
-int Almacen :: getNumeroEstante()const{
+int Almacen::getNumeroEstante()const{
 return numeroEstante;
 }
 void Almacen::setNumeroEstante(int numeroEstante){
