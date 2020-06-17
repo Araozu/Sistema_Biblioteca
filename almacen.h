@@ -10,7 +10,17 @@ class Almacen {
 private:
     Libro* libros;          // Array de libros disponibles.
     int cantidadDeLibros;   // Para poder manejar el array de libros
+public:
+    Libro* getLibros() const;
 
+    void setLibros(Libro* libros);
+
+    int getCantidadDeLibros() const;
+
+    void setCantidadDeLibros(int cantidadDeLibros);
+
+public:
+    Almacen(Libro* libros, int cantidadDeLibros);
 
 };
 

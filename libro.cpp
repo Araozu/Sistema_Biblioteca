@@ -4,7 +4,8 @@
 
 #include "libro.h"
 
-Libro::Libro(int _codigo, std::string _nombre, Autor _autor, std::string _fechaPublicacion, std::string _tema){
+Libro::Libro(int _codigo, std::string _nombre, Autor _autor, std::string _fechaPublicacion, std::string _tema)
+        : autor(std::__cxx11::string(), std::__cxx11::string(), 0, 0, std::__cxx11::string()) {
     codigo = _codigo;
     nombre = _nombre;
     autor = _autor;

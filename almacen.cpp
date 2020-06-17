@@ -4,29 +4,20 @@
 
 #include "almacen.h"
 
-Almacen::Almacen(int _cantidadLibros, int _numeroEstante, int _numeroPasillo){
-	cantidadLibros = _cantidadLibros;
-	numeroEstante = _numeroEstante;
-	numeroPasillo = _numeroPasillo;
-	
-}
-int Almacen::getCantidadLibros()const{
-return cantidadLibros;
+Almacen::Almacen(Libro* libros, int cantidadDeLibros) : libros(libros), cantidadDeLibros(cantidadDeLibros) {}
 
-}
-void Almacen::setCantidadLibros(int cantidadLibros){
-	Almacen::cantidadLibros=cantidadLibros;
+Libro* Almacen::getLibros() const {
+    return libros;
 }
 
-int Almacen::getNumeroEstante()const{
-return numeroEstante;
+void Almacen::setLibros(Libro* libros) {
+    Almacen::libros = libros;
 }
-void Almacen::setNumeroEstante(int numeroEstante){
-	Almacen::numeroEstante = numeroEstante;
+
+int Almacen::getCantidadDeLibros() const {
+    return cantidadDeLibros;
 }
-int Almacen::getNumeroPasillo()const{
-return numeroPasillo;
-}
-void Almacen::setNumeroPasiillo(int numeroPasillo){
-	Almacen::numeroPasillo = numeroPasillo;
+
+void Almacen::setCantidadDeLibros(int cantidadDeLibros) {
+    Almacen::cantidadDeLibros = cantidadDeLibros;
 }
