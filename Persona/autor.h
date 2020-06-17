@@ -8,6 +8,8 @@
 
 class Autor: public Persona {
 
+public:
+    Autor(std::string nombres, std::string apellidos, int dni, int telefono, std::string direccion);
 };
 
 

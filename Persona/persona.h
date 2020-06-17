@@ -14,7 +14,7 @@ class Persona {
         int telefono;
         std::string direccion;
     public:
-        Persona(std::string _nombres,std::string _apellidos,int _dni,int _telefono, std::string _direccion,);
+        Persona(std::string _nombres,std::string _apellidos,int _dni,int _telefono, std::string _direccion);
 
         std::string getNombres() const;
 

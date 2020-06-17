@@ -7,7 +7,9 @@
 #include "persona.h"
 
 class Cliente: Persona {
-
+public:
+    Cliente(const std::string &nombres, const std::string &apellidos, int dni, int telefono,
+            const std::string &direccion);
 };
 
 

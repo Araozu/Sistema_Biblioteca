@@ -3,7 +3,7 @@
 //
 
 #include "persona.h"
-Persona::Persona(std::string _nombres,std::string _apellidos,int _dni,int _telefono, std::string _direccion,){
+Persona::Persona(std::string _nombres,std::string _apellidos,int _dni,int _telefono, std::string _direccion){
     nombres=_nombres;
     apellidos=_apellidos;
     dni=_dni;
