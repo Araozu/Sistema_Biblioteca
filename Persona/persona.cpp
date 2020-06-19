@@ -1,8 +1,9 @@
 //
 // Created by Fernando on 04/06/2020.
 //
-
+#include <stdio.h>
 #include "persona.h"
+using namespace std;
 Persona::Persona(std::string _nombres,std::string _apellidos,int _dni,int _telefono, std::string _direccion){
     nombres=_nombres;
     apellidos=_apellidos;
@@ -49,3 +50,28 @@ std::string Persona::getDireccion() const{
 void Persona::setDireccion(std::string direccion){
     Persona::direccion = direccion;
 }
+void Persona::crearPersonaPorConsola() {
+    cout<<("------------------------------------BIENVENIDO--------------------------------------------------")<<endl;
+    string nombres;
+    string apellidos;
+    int dni;
+    int telefono;
+    string direccion;
+    cout<<"Ingrese nombre: ";
+    cin>>nombres;
+    cout<<"Ingrese Apellidos: ";
+    cin>>apellidos;
+    cout<<"Ingrese Dni: ";
+    cin>>dni;
+    cout<<"Ingrese Telefono: ";
+    cin>>telefono;
+    cout<<"Ingrese Direccion: ";
+    cin>>direccion;
+    cout<<"Nombre: "<<nombres<<endl;
+    cout<<"Apellidos: "<<apellidos<<endl;
+    cout<<"DNI: "<<dni<<endl;
+    cout<<"Telefono: "<<telefono<<endl;
+    cout<<"Direccion: "<<direccion<<endl;
+
+}
+

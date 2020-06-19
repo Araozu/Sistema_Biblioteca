@@ -8,7 +8,7 @@
 
 class Persona {
     private:
-        std::string nombres;
+        std::basic_string<char> nombres;
         std::string apellidos;
         int dni;
         int telefono;
@@ -35,6 +35,8 @@ class Persona {
         std::string getDireccion() const;
 
         void setDireccion(std::string direccion);
+
+        static void crearPersonaPorConsola();
 
     };
 
