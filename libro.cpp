@@ -52,3 +52,20 @@ std::string Libro::getTema() const{
 void Libro::setTema(std::string tema){
     Libro::tema = tema;
 }
+void Libro::crearLibroPorConsola(){
+	
+	Libro libro1;
+	int  codigo;
+	string nombre;
+	string fechaPublicacion;
+	string tema;
+	cout<<"DATOS  DEL LIBRO";
+	cout<<"Ingrese codigo del Libro:";
+	cin>>codigo;
+	cout<<"Ingrese Nombre  del Libro";
+	getline(cin,nombre);
+	cout<<" Ingrese la  fecha de  publicacion";
+	cin>>fechaPublicacion;
+	cout<<"Ingrese tema";
+	cin>>tema;
+}
