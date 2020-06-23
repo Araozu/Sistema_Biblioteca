@@ -4,6 +4,7 @@
 
 #ifndef SISTEMABIBLIOTECA_CATEGORIA_H
 #define SISTEMABIBLIOTECA_CATEGORIA_H
+#include "iostream"
 
 class Categoria {
     private:

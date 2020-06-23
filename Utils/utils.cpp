@@ -6,7 +6,7 @@
 #include <sstream>
 #include <iostream>
 
-std::vector<std::string> split(const std::string &strToSplit, char delimeter) {
+std::vector<std::string> splitStr(const std::string &strToSplit, char delimeter) {
     std::stringstream ss(strToSplit);
     std::string item;
     std::vector<std::string> splittedStrings;

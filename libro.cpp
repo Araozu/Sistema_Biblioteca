@@ -13,59 +13,42 @@ Libro::Libro(int _codigo, std::string _nombre, Autor _autor, std::string _fechaP
     tema = _tema;
 }
 
-int Libro::getCodigo() const{
+int Libro::getCodigo() const {
     return codigo;
-}   
+}
 
-void Libro::setCodigo(int codigo){
+void Libro::setCodigo(int codigo) {
     Libro::codigo = codigo;
-}   
+}
 
-std::string Libro::getNombre() const{
+std::string Libro::getNombre() const {
     return nombre;
 }
 
-void Libro::setNombre(std::string nombre){
+void Libro::setNombre(std::string nombre) {
     Libro::nombre = nombre;
 }
-   
-Autor Libro::getAutor() const{
+
+Autor Libro::getAutor() const {
     return autor;
 }
-    
-void Libro::setAutor(Autor autor){
+
+void Libro::setAutor(Autor autor) {
     Libro::autor = autor;
 }
-    
-std::string Libro::getFechaPublicacion() const{
+
+std::string Libro::getFechaPublicacion() const {
     return fechaPublicacion;
 }
-    
-void Libro::setFechaPulicacion(std::string fechaPublicacion){
+
+void Libro::setFechaPulicacion(std::string fechaPublicacion) {
     Libro::fechaPublicacion = fechaPublicacion;
 }
 
-std::string Libro::getTema() const{
+std::string Libro::getTema() const {
     return tema;
 }
-    
-void Libro::setTema(std::string tema){
+
+void Libro::setTema(std::string tema) {
     Libro::tema = tema;
-}
-void Libro::crearLibroPorConsola(){
-	
-	Libro libro1;
-	int  codigo;
-	string nombre;
-	string fechaPublicacion;
-	string tema;
-	cout<<"DATOS  DEL LIBRO";
-	cout<<"Ingrese codigo del Libro:";
-	cin>>codigo;
-	cout<<"Ingrese Nombre  del Libro";
-	getline(cin,nombre);
-	cout<<" Ingrese la  fecha de  publicacion";
-	cin>>fechaPublicacion;
-	cout<<"Ingrese tema";
-	cin>>tema;
 }
