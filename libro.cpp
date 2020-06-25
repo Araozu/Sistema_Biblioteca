@@ -4,14 +4,9 @@
 
 #include "libro.h"
 
-Libro::Libro(int _codigo, std::string _nombre, Autor _autor, std::string _fechaPublicacion, std::string _tema)
-        : autor(std::__cxx11::string(), std::__cxx11::string(), 0, 0, std::__cxx11::string()) {
-    codigo = _codigo;
-    nombre = _nombre;
-    autor = _autor;
-    fechaPublicacion = _fechaPublicacion;
-    tema = _tema;
-}
+
+Libro::Libro(int codigo, std::string nombre, Autor autor, std::string fechaPublicacion, std::string tema) :
+        codigo(codigo), nombre(nombre), autor(autor), fechaPublicacion(fechaPublicacion), tema(tema) {}
 
 int Libro::getCodigo() const {
     return codigo;
@@ -52,3 +47,45 @@ std::string Libro::getTema() const {
 void Libro::setTema(std::string tema) {
     Libro::tema = tema;
 }
+
+// TODO: Usar un Autor apropiado para crear el objeto.
+Libro Libro::crearLibroPorConsola() {
+    std::cout << "Creando un Libro." << std::endl;
+
+    std::string nombreLibro;
+    do {
+        std::cout << "Ingresa el nombre del libro:" << std::endl;
+        std::getline(std::cin, nombreLibro);
+
+        if (!nombreLibro.empty()) break;
+
+        std::cout << "Por favor, ingresa un nombre.";
+    } while (true);
+
+    std::string fechaPublicacion;
+    do {
+        std::cout << "Ingresa la fecha de publicacion del libro:" << std::endl;
+        std::getline(std::cin, fechaPublicacion);
+
+        if (!fechaPublicacion.empty()) break;
+
+        std::cout << "Por favor, ingresa una fecha.";
+    } while (true);
+
+    std::string tema;
+    do {
+        std::cout << "Ingresa el tema del libro:" << std::endl;
+        std::getline(std::cin, tema);
+
+        if (!tema.empty()) break;
+
+        std::cout << "Por favor, ingresa un tema.";
+    } while (true);
+
+    Autor t("_", "_", -1, -1, "_");
+    Libro l(0, nombreLibro, t, fechaPublicacion, tema);
+    return l;
+}
+
+
+
