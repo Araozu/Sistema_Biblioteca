@@ -48,11 +48,10 @@ bool Prestamo::isDevuelto() const {
     return devuelto;
 }
 
-std::string Prestamo::toCSV() const{
+std::string toCSV() const{
     std::string csv;
-    csv=std::to_string(getCodigoLibro())+","+std::to_string(getDniCliente())+","+std::to_string(getFechaPrestamo())+","+std::to_string(getFechaDevolucion)+","+isDevuelto();
-    return csv
+    csv=std::to_string(getCodigoLibro())+","+std::to_string(getDniCliente())+","+getFechaPrestamo()+","+getFechaDevolucion()+","+std::to_string(isDevuelto());
+    return csv;
 }
     
-static Prestamo Prestamo::fromCSV(std::string csv){
-}
+
