@@ -2,7 +2,9 @@
 // Created by Fernando on 04/06/2020.
 //
 #include <iostream>
+#include <sstream>
 #include "prestamo.h"
+#include <stdlib.h>
 
 Prestamo::Prestamo(int _codigoLibro, int _dniCliente, std::string _fechaPrestamo, std::string _fechaDevolucion) {
     codigoLibro = _codigoLibro;
@@ -48,13 +50,20 @@ bool Prestamo::isDevuelto() const {
     return devuelto;
 }
 
-std::string Prestamo::toCSV() const{
+std::string Prestamo::toCSV(){
     std::string csv;
-    csv=std::to_string(getCodigoLibro())+","+std::to_string(getDniCliente())+","+getFechaPrestamo()+","+getFechaDevolucion()+","+std::to_string(isDevuelto());
+    std::stringstream gstream;
+    gstream << getCodigoLibro(); 
+	std::string codigo=gstream.str();
+	gstream << getDniCliente();
+	std::string dni=gstream.str();
+	gstream << isDevuelto();
+	std::string devuelto=gstream.str();
+    csv=codigo+","+dni+","+getFechaPrestamo()+","+getFechaDevolucion()+","+devuelto;
     return csv;
 }
     
-static Prestamo Prestamo::fromCSV(std::string csv){
+Prestamo Prestamo::fromCSV(std::string csv){
     std::string datos[5];
     int codigo,dni,n=0;
     std::string prestamo,devolucion,aux;
@@ -75,3 +84,4 @@ static Prestamo Prestamo::fromCSV(std::string csv){
     Prestamo nuevoPrestamo(codigo,dni,prestamo,devolucion);
     return nuevoPrestamo;
 }
+
