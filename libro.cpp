@@ -2,6 +2,7 @@
 // Created by Fernando on 04/06/2020.
 //
 
+#include <sstream>
 #include "libro.h"
 
 
@@ -86,38 +87,40 @@ Libro Libro::crearLibroPorConsola() {
     Libro l(0, nombreLibro, t, fechaPublicacion, tema);
     return l;
 }
-std::string Libro::toCSV(){
+
+std::string Libro::toCSV() {
     std::string csv;
     std::stringstream gstream;
     gstream << getCodigo();
-    std::string codigo=gstream.str();
-    gstream << getAutor();
-    std::string autor=gstream.str();
-    csv=codigo+","+getNombre()+","+autor+","+getFechaPublicacion()+","+getTema();
+    std::string codigo = gstream.str();
+    gstream << getAutor().getDni();
+    std::string autor = gstream.str();
+    csv = codigo + "," + getNombre() + "," + autor + "," + getFechaPublicacion() + "," + getTema();
     return csv;
 }
 
-Libro Libro::fromCSV(std::string csv){
+Libro Libro::fromCSV(std::string csv) {
     std::string datos[5];
-    int codigo,n=0;
-    Autor autor;
-    std::string nombre,fechaPublicacion,tema,aux;
+    int codigo, n = 0;
+    Autor autor("", "", -1, -1, "");
+    std::string nombre, fechaPublicacion, tema, aux;
 
-    for(int i=0;i<csv.size();i++){
-        if(csv[i]==','){
+    for (int i = 0; i < csv.size(); i++) {
+        if (csv[i] == ',') {
             n++;
-        }
-        else{
-            datos[n]+=csv[i];
+        } else {
+            datos[n] += csv[i];
         }
     }
-    codigo= atoi(datos[0].c_str());
-    autor=atoi(datos[1].c_str());
-    nombre= datos[2];
-    fechaPublicacion=datos[3];
-    tema=datos[4];
+    codigo = atoi(datos[0].c_str());
 
-    Prestamo nuevoLibro(codigo,nombre,autor,fechaPublicacion,tema);
+    // TODO: Usar un menu para obtener el Autor
+    // autor = atoi(datos[1].c_str());
+    nombre = datos[2];
+    fechaPublicacion = datos[3];
+    tema = datos[4];
+
+    Libro nuevoLibro(codigo, nombre, autor, fechaPublicacion, tema);
     return nuevoLibro;
 }
 

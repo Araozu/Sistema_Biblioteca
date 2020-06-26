@@ -42,7 +42,7 @@ public:
     
     std::string toCSV() ;
 
-    Libro fromCSV(std::string csv);
+    static Libro fromCSV(std::string csv);
 };
 
 
