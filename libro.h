@@ -39,6 +39,10 @@ public:
     void setTema(std::string tema);
 
     static Libro crearLibroPorConsola();
+    
+    std::string toCSV() ;
+
+    Libro fromCSV(std::string csv);
 };
 
 
