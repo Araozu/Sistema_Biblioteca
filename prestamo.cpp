@@ -63,7 +63,7 @@ std::string Prestamo::toCSV(){
     return csv;
 }
     
-Prestamo Prestamo::fromCSV(std::string csv){
+Prestamo Prestamo::fromCSV(std::string csv){ 
     std::string datos[5];
     int codigo,dni,n=0;
     std::string prestamo,devolucion,aux;
