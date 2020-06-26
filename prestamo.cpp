@@ -1,7 +1,7 @@
 //
 // Created by Fernando on 04/06/2020.
 //
-
+#include <iostream>
 #include "prestamo.h"
 
 Prestamo::Prestamo(int _codigoLibro, int _dniCliente, std::string _fechaPrestamo, std::string _fechaDevolucion) {
