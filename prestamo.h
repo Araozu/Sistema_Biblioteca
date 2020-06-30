@@ -34,10 +34,10 @@ public:
     const std::string &getFechaDevolucion() const;
 
     void setFechaDevolucion(const std::string &fechaDevolucion);
-    
-    std::string toCSV() ;
-    
-	Prestamo fromCSV(std::string csv);
+
+    std::string toCSV();
+
+    static Prestamo fromCSV(std::string csv);
 };
 
 

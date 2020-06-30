@@ -3,3 +3,7 @@
 //
 
 #include "sistema.h"
+
+Sistema::Sistema() {
+    // prestamos = Sistema::cargarPrestamos();
+}

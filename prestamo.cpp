@@ -50,38 +50,39 @@ bool Prestamo::isDevuelto() const {
     return devuelto;
 }
 
-std::string Prestamo::toCSV(){
+std::string Prestamo::toCSV() {
     std::string csv;
     std::stringstream gstream;
-    gstream << getCodigoLibro(); 
-	std::string codigo=gstream.str();
-	gstream << getDniCliente();
-	std::string dni=gstream.str();
-	gstream << isDevuelto();
-	std::string devuelto=gstream.str();
-    csv=codigo+","+dni+","+getFechaPrestamo()+","+getFechaDevolucion()+","+devuelto;
+
+    gstream << getCodigoLibro() << ",";
+    gstream << getDniCliente() << ",";
+    gstream << fechaPrestamo << ",";
+    gstream << fechaDevolucion << ",";
+    gstream << isDevuelto();
+
+    csv = gstream.str();
     return csv;
 }
-    
-Prestamo Prestamo::fromCSV(std::string csv){ 
+
+Prestamo Prestamo::fromCSV(std::string csv) {
     std::string datos[5];
-    int codigo,dni,n=0;
-    std::string prestamo,devolucion,aux;
-     
-    for(int i=0;i<csv.size();i++){
-        if(csv[i]==','){
+    int codigo, dni, n = 0;
+    std::string prestamo, devolucion, aux;
+
+    for (char i : csv) {
+        if (i == ',') {
             n++;
-        }
-        else{
-            datos[n]+=csv[i];   
+        } else {
+            datos[n] += i;
         }
     }
-    codigo= atoi(datos[0].c_str());
-    dni= atoi(datos[1].c_str());
-    prestamo=datos[2];
-    devolucion=datos[3];
-    
-    Prestamo nuevoPrestamo(codigo,dni,prestamo,devolucion);
+
+    codigo = atoi(datos[0].c_str());
+    dni = atoi(datos[1].c_str());
+    prestamo = datos[2];
+    devolucion = datos[3];
+
+    Prestamo nuevoPrestamo(codigo, dni, prestamo, devolucion);
     return nuevoPrestamo;
 }
 

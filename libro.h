@@ -11,12 +11,16 @@ class Libro {
 private:
     int codigo;
     std::string nombre;
-    Autor autor;
+    int codigoAutor;
     std::string fechaPublicacion;  // TODO: Cambiar a un objeto
-    std::string tema;  // Biologia/Matematica/etc
+    int codigoCategoria;  // Biologia/Matematica/etc
 
 public:
-    Libro(int codigo, std::string nombre, Autor autor, std::string fechaPublicacion, std::string tema);
+    Libro(int codigo, std::string nombre, int autor, std::string fechaPublicacion, int codigoCat);
+
+    int getCodigoAutor() const;
+
+    void setCodigoAutor(int codigoAutor);
 
     int getCodigo() const;
 
@@ -26,21 +30,19 @@ public:
 
     void setNombre(std::string nombre);
 
-    Autor getAutor() const;
-
-    void setAutor(Autor autor);
-
     std::string getFechaPublicacion() const;
 
     void setFechaPulicacion(std::string fechaPublicacion);
 
-    std::string getTema() const;
+    void setFechaPublicacion(const std::string &fechaPublicacion);
 
-    void setTema(std::string tema);
+    int getCodigoCategoria() const;
+
+    void setCodigoCategoria(int codigoCategoria);
 
     static Libro crearLibroPorConsola();
-    
-    std::string toCSV() ;
+
+    std::string toCSV();
 
     static Libro fromCSV(std::string csv);
 };
