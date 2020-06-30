@@ -6,8 +6,9 @@
 #include "libro.h"
 
 
-Libro::Libro(int codigo, std::string nombre, Autor autor, std::string fechaPublicacion, std::string tema) :
-        codigo(codigo), nombre(nombre), autor(autor), fechaPublicacion(fechaPublicacion), tema(tema) {}
+Libro::Libro(int codigo, std::string nombre, int autor, std::string fechaPublicacion, int codigoCat) :
+        codigo(codigo), nombre(nombre), codigoAutor(autor), fechaPublicacion(fechaPublicacion),
+        codigoCategoria(codigoCat) {}
 
 int Libro::getCodigo() const {
     return codigo;
@@ -25,12 +26,12 @@ void Libro::setNombre(std::string nombre) {
     Libro::nombre = nombre;
 }
 
-Autor Libro::getAutor() const {
-    return autor;
+int Libro::getCodigoAutor() const {
+    return codigoAutor;
 }
 
-void Libro::setAutor(Autor autor) {
-    Libro::autor = autor;
+void Libro::setCodigoAutor(int codigoAutor) {
+    Libro::codigoAutor = codigoAutor;
 }
 
 std::string Libro::getFechaPublicacion() const {
@@ -41,15 +42,18 @@ void Libro::setFechaPulicacion(std::string fechaPublicacion) {
     Libro::fechaPublicacion = fechaPublicacion;
 }
 
-std::string Libro::getTema() const {
-    return tema;
+void Libro::setFechaPublicacion(const std::string &fechaPublicacion) {
+    Libro::fechaPublicacion = fechaPublicacion;
 }
 
-void Libro::setTema(std::string tema) {
-    Libro::tema = tema;
+int Libro::getCodigoCategoria() const {
+    return codigoCategoria;
 }
 
-// TODO: Usar un Autor apropiado para crear el objeto.
+void Libro::setCodigoCategoria(int codigoCategoria) {
+    Libro::codigoCategoria = codigoCategoria;
+}
+
 Libro Libro::crearLibroPorConsola() {
     std::cout << "Creando un Libro." << std::endl;
 
@@ -73,37 +77,32 @@ Libro Libro::crearLibroPorConsola() {
         std::cout << "Por favor, ingresa una fecha.";
     } while (true);
 
-    std::string tema;
-    do {
-        std::cout << "Ingresa el tema del libro:" << std::endl;
-        std::getline(std::cin, tema);
-
-        if (!tema.empty()) break;
-
-        std::cout << "Por favor, ingresa un tema.";
-    } while (true);
-
-    Autor t("_", "_", -1, -1, "_");
-    Libro l(0, nombreLibro, t, fechaPublicacion, tema);
+    // TODO: En lugar de usar 0 como codigo de autor, habra un metodo
+    //       Sistema::buscarAutor el cual busca el autor por consola, y
+    //       devuelve su codigo para poder usarse aqui.
+    //       Tambien para libro
+    Libro l(0, nombreLibro, 0, fechaPublicacion, 0);
     return l;
 }
 
 std::string Libro::toCSV() {
     std::string csv;
     std::stringstream gstream;
-    gstream << getCodigo();
-    std::string codigo = gstream.str();
-    gstream << getAutor().getDni();
-    std::string autor = gstream.str();
-    csv = codigo + "," + getNombre() + "," + autor + "," + getFechaPublicacion() + "," + getTema();
+
+    gstream << getCodigo() << ",";
+    gstream << nombre << ",";
+    gstream << codigoAutor << ",";
+    gstream << fechaPublicacion << ",";
+    gstream << codigoAutor;
+    csv = gstream.str();
     return csv;
 }
 
 Libro Libro::fromCSV(std::string csv) {
     std::string datos[5];
-    int codigo, n = 0;
-    Autor autor("", "", -1, -1, "");
-    std::string nombre, fechaPublicacion, tema, aux;
+    int codigo, tema, n = 0;
+
+    std::string nombre, fechaPublicacion, aux;
 
     for (int i = 0; i < csv.size(); i++) {
         if (csv[i] == ',') {
@@ -118,10 +117,12 @@ Libro Libro::fromCSV(std::string csv) {
     // autor = atoi(datos[1].c_str());
     nombre = datos[2];
     fechaPublicacion = datos[3];
-    tema = datos[4];
+    tema = atoi(datos[4].c_str());
 
-    Libro nuevoLibro(codigo, nombre, autor, fechaPublicacion, tema);
+    Libro nuevoLibro(codigo, nombre, 0, fechaPublicacion, tema);
     return nuevoLibro;
 }
+
+
 
 
