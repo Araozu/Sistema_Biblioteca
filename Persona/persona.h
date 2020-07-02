@@ -36,7 +36,7 @@ class Persona {
 
         void setDireccion(std::string direccion);
 
-        static void crearPersonaPorConsola();
+        static Persona crearPersonaPorConsola();
 
     };
 

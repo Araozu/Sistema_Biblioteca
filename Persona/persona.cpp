@@ -54,7 +54,7 @@ void Persona::setDireccion(std::string direccion) {
     Persona::direccion = direccion;
 }
 
-void Persona::crearPersonaPorConsola() {
+Persona Persona::crearPersonaPorConsola() {
     cout << ("------------------------------------BIENVENIDO--------------------------------------------------")
          << endl;
     string nombres;
@@ -117,6 +117,9 @@ void Persona::crearPersonaPorConsola() {
     cout << "DNI: " << dni << endl;
     cout << "Telefono: " << telefono << endl;
     cout << "Direccion: " << direccion << endl;
+
+    Persona persona(nombres,apellidos,dni,telefono,direccion);
+    return persona;
 
 }
 
