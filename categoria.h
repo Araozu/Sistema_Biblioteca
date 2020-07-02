@@ -19,6 +19,9 @@ class Categoria {
 
         int getId() const;
 
+        std::string toCSV();
+        static Categoria fromCSV(std::string csv);
+
 
 };
 
