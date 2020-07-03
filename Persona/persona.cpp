@@ -2,6 +2,7 @@
 // Created by Fernando on 04/06/2020.
 //
 #include "persona.h"
+#include <sstream>
 
 using namespace std;
 
@@ -117,8 +118,26 @@ Persona Persona::crearPersonaPorConsola() {
     cout << "Telefono: " << telefono << endl;
     cout << "Direccion: " << direccion << endl;
 
-    Persona persona(nombres,apellidos,dni,telefono,direccion);
+    Persona persona(nombres, apellidos, dni, telefono, direccion);
     return persona;
 
 }
+
+std::string Persona::toCSV() {
+    std::stringstream sstream;
+
+    sstream << nombres << ","
+            << apellidos << ","
+            << dni << ","
+            << telefono << ","
+            << direccion;
+
+    return sstream.str();
+}
+
+Persona Persona::fromCSV() {
+
+}
+
+
 

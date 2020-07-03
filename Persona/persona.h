@@ -8,8 +8,8 @@
 
 class Persona {
     private:
-        std::basic_string<char> nombres;
-        std::string apellidos;
+        std::string nombres;
+    std::string apellidos;
         int dni;
         int telefono;
         std::string direccion;
@@ -28,16 +28,20 @@ class Persona {
 
         void setDni(int dni);
 
-        int getTelefono() const;
+    int getTelefono() const;
 
-        void setTelefono(int telefono);
+    void setTelefono(int telefono);
 
-        std::string getDireccion() const;
+    std::string getDireccion() const;
 
-        void setDireccion(std::string direccion);
+    void setDireccion(std::string direccion);
 
-        static Persona crearPersonaPorConsola();
+    static Persona crearPersonaPorConsola();
 
-    };
+    std::string toCSV();
+
+    static Persona fromCSV();
+
+};
 
 #endif //SISTEMABIBLIOTECA_PERSONA_H
