@@ -4,8 +4,6 @@
 #include "persona.h"
 #include <sstream>
 #include <vector>
-#include "../Utils/utils.h"
-#include <exception>
 
 using namespace std;
 
@@ -139,17 +137,19 @@ std::string Persona::toCSV() {
 }
 
 Persona Persona::fromCSV(const std::string &csv) {
-    std::vector<std::string> fragmentos = splitStr(csv, ',');
+    std::string fragmentos[5];
+    int n = 0;
 
-    if (fragmentos.size() == 5) {
-        int dni = std::stoi(fragmentos[2]);
-        int telefono = std::stoi(fragmentos[3]);
-        Persona p{fragmentos[0], fragmentos[1], dni, telefono, fragmentos[4]};
-        return p;
-    } else {
-        std::cerr << "Error al crear una persona desde un string en formato csv." << std::endl
-                  << "El string causante es:" << std::endl
-                  << csv << std::endl;
-        throw 1;
+    for (char i : csv) {
+        if (i == ',') {
+            n++;
+        } else {
+            fragmentos[n] += i;
+        }
     }
+
+    int dni = std::stoi(fragmentos[2]);
+    int telefono = std::stoi(fragmentos[3]);
+    Persona p{fragmentos[0], fragmentos[1], dni, telefono, fragmentos[4]};
+    return p;
 }
