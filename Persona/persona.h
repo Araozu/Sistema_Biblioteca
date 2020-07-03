@@ -4,29 +4,31 @@
 
 #ifndef SISTEMABIBLIOTECA_PERSONA_H
 #define SISTEMABIBLIOTECA_PERSONA_H
+
 #include <iostream>
 
 class Persona {
-    private:
-        std::string nombres;
+private:
+    std::string nombres;
     std::string apellidos;
-        int dni;
-        int telefono;
-        std::string direccion;
-    public:
-        Persona(std::string _nombres,std::string _apellidos,int _dni,int _telefono, std::string _direccion);
+    int dni;
+    int telefono;
+    std::string direccion;
 
-        std::string getNombres() const;
+public:
+    Persona(std::string _nombres, std::string _apellidos, int _dni, int _telefono, std::string _direccion);
 
-        void setNombres(std::string nombres);
+    std::string getNombres() const;
 
-        std::string getApellidos() const;
+    void setNombres(std::string nombres);
 
-        void setApellidos(std::string apellidos);
+    std::string getApellidos() const;
 
-        int getDni() const;
+    void setApellidos(std::string apellidos);
 
-        void setDni(int dni);
+    int getDni() const;
+
+    void setDni(int dni);
 
     int getTelefono() const;
 
@@ -40,7 +42,7 @@ class Persona {
 
     std::string toCSV();
 
-    static Persona fromCSV();
+    static Persona fromCSV(const std::string &csv);
 
 };
 

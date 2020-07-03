@@ -4,24 +4,26 @@
 
 #ifndef SISTEMABIBLIOTECA_CATEGORIA_H
 #define SISTEMABIBLIOTECA_CATEGORIA_H
+
 #include "iostream"
 
 class Categoria {
-    private:
-        std::string nombre;
-        int id;
-    public:
-        Categoria(std::string _nombre,int _id);
+private:
+    std::string nombre;
+    int id;
 
-        std::string getNombre() const;
+public:
+    Categoria(std::string _nombre, int _id);
 
-        void setNombre(std::string nombre);
+    std::string getNombre() const;
 
-        int getId() const;
+    void setNombre(std::string nombre);
 
-        std::string toCSV();
-        static Categoria fromCSV(std::string csv);
+    int getId() const;
 
+    std::string toCSV();
+
+    static Categoria fromCSV(std::string csv);
 
 };
 

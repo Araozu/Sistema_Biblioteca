@@ -4,7 +4,7 @@
 #include <iostream>
 #include <sstream>
 #include "prestamo.h"
-#include <stdlib.h>
+#include <cstdlib>
 
 Prestamo::Prestamo(int _codigoLibro, int _dniCliente, std::string _fechaPrestamo, std::string _fechaDevolucion) {
     codigoLibro = _codigoLibro;

@@ -10,6 +10,7 @@ class Almacen {
 private:
     Libro* libros;          // Array de libros disponibles.
     int cantidadDeLibros;   // Para poder manejar el array de libros
+
 public:
     Libro* getLibros() const;
 

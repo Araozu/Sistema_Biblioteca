@@ -7,6 +7,6 @@
 #include <iostream>
 #include <vector>
 
-std::vector<std::string> split(std::string strToSplit, char delimeter);
+std::vector<std::string> splitStr(std::string strToSplit, char delimeter);
 
 #endif //SISTEMABIBLIOTECA_UTILS_H
