@@ -1,7 +1,6 @@
 //
 // Created by Fernando on 04/06/2020.
 //
-#include <stdio.h>
 #include "persona.h"
 
 using namespace std;
@@ -96,9 +95,9 @@ Persona Persona::crearPersonaPorConsola() {
     do {
         cout << "Ingrese Celular: ";
         cin >> telefono;
-        if (telefono <= 100000000 || telefono >= 9999999999)
+        if (telefono <= 100000000 || telefono >= 999999999)
             cout << "Telefono no Valido,volver a intentar!" << endl;
-    } while (telefono <= 100000000 || telefono >= 9999999999);
+    } while (telefono <= 100000000 || telefono >= 999999999);
     cout << "INGRESO DE TELEFONO EXITOSO." << endl;
     //DIRECCION
     do {
