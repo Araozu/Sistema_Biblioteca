@@ -52,3 +52,18 @@ Categoria Categoria::fromCSV(std::string csv) {
     Categoria nuevoCategoria(nombre, id);
     return nuevoCategoria;
 }
+Categoria Categoria::crearCategoriaPorConsola() {
+    std::cout << "Seccion Categoria" << std::endl;
+    std::string categoria;
+    do {
+        std::cout << "Ingresa categoria del libro:" << std::endl;
+        std::getline(std::cin, categoria);
+
+        if (!categoria.empty()) break;
+
+        std::cout << "Ingrese categoria";
+    } while (true);
+    
+    Categoria categoria1(categoria,0);
+    return    categoria1;
+}
