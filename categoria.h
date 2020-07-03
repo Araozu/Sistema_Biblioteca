@@ -20,10 +20,14 @@ public:
     void setNombre(std::string nombre);
 
     int getId() const;
-
+    
+	void setId(int  id);
+	
     std::string toCSV();
 
     static Categoria fromCSV(std::string csv);
+    
+    static Categoria crearCategoriaPorConsola();
 
 };
 
