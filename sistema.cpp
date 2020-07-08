@@ -8,21 +8,20 @@ Sistema::Sistema() {
     // prestamos = Sistema::cargarPrestamos();
 }
 
-static std::vector<Libro> Sistema::cargarLibros(){
-    ifstream lectura("/data/libros.csv");
+std::vector<Libro> Sistema::cargarLibros() {
+    std::ifstream lectora("./data/libros.csv");
     std::vector<Libro> libros;
-    std::string line;
-    std::getline(lectura,line);
-    std::stringstream          lineStream(line);
-    std::string cell;
-    while(std::getline(lineStream,cell, ','))
-    {
-        libros.push_back(cell);
+    std::string linea;
+
+    std::getline(lectora, linea);
+
+    while (!lectora.eof()) {
+        getline(lectora, linea);
+        Libro l = Libro::fromCSV(linea);
+        libros.push_back(l);
     }
-    if (!lineStream && cell.empty())
-    {
-        libros.push_back("");
-    }
+
     return libros;
 }
+
 

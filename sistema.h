@@ -5,6 +5,7 @@
 #ifndef SISTEMABIBLIOTECA_SISTEMA_H
 #define SISTEMABIBLIOTECA_SISTEMA_H
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include "libro.h"
 #include "Persona/cliente.h"
