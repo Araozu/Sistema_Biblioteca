@@ -24,4 +24,19 @@ std::vector<Libro> Sistema::cargarLibros() {
     return libros;
 }
 
+std::vector<Libro> Sistema::cargarPrestamos() {
+    std::ifstream lectora("./data/prestamos.csv");
+    std::vector<Prestamo> prestamos;
+    std::string linea;
+
+    std::getline(lectora, linea);
+
+    while (!lectora.eof()) {
+        getline(lectora, linea);
+        Prestamo p = Prestamo::fromCSV(linea);
+        prestamos.push_back(p);
+    }
+
+    return prestamos;
+}
 
