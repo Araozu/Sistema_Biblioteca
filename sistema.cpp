@@ -24,7 +24,7 @@ std::vector<Libro> Sistema::cargarLibros() {
     return libros;
 }
 
-std::vector<Libro> Sistema::cargarPrestamos() {
+std::vector<Prestamo> Sistema::cargarPrestamos() {
     std::ifstream lectora("./data/prestamos.csv");
     std::vector<Prestamo> prestamos;
     std::string linea;
