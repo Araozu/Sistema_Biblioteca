@@ -50,6 +50,7 @@ std::vector<Persona> Sistema::cargarPersonas() {
     while (!lectora.eof()) {
         getline(lectora, linea);
         Persona p = Persona::fromCSV(linea);
+        
         personas.push_back(p);
     }
 
