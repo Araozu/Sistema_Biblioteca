@@ -15,6 +15,8 @@ class Sistema {
 private:
     std::vector<Prestamo> prestamos;
     std::vector<Libro> libro;
+    std::vector<Cliente> cliente;
+    std::vector<Persona> persona;
 
 public:
     Sistema();
@@ -36,7 +38,10 @@ public:
 
     static std::vector<Libro> cargarLibros();
 
+    static std::vector<Cliente> cargarClientes();
+
     static std::vector<Persona> cargarPersonas();
+
 };
 
 
