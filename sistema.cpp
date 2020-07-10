@@ -45,11 +45,11 @@ std::vector<Cliente> Sistema::cargarClientes() {
     std::vector<Cliente> clientes;
     std::string linea;
 
-    std::getline(lectora,linea);
+    std::getline(lectora, linea);
 
-    while(!lectora.eof()){
-        getline(lectora,linea);
-        Cliente c= Cliente::fromCSV(linea);
+    while (!lectora.eof()) {
+        getline(lectora, linea);
+        Cliente c = Cliente::fromCSV(linea);
         clientes.push_back(c);
 
     }
@@ -57,6 +57,7 @@ std::vector<Cliente> Sistema::cargarClientes() {
     return clientes;
 
 }
+
 std::vector<Persona> Sistema::cargarPersonas() {
     std::ifstream lectora("./data/personas.csv");
     std::vector<Persona> personas;
@@ -67,21 +68,22 @@ std::vector<Persona> Sistema::cargarPersonas() {
     while (!lectora.eof()) {
         getline(lectora, linea);
         Persona p = Persona::fromCSV(linea);
-        
+
         personas.push_back(p);
     }
 
     return personas;
 }
-std::vector<Categoria> Sistema::cargarCategorias(){
-	std::ifstream lectura("./data/categorias.csv");
-	std::vector<Categoria> categorias;
-	std::string linea;
-	std::getline(lectura, linea);
-	while(!lectura.eof()){
-		getline(lectura,linea);
-		Categoria c = Categoria::fromCSV(linea);
-		categorias.push_back(c);
-	}
-	return categorias;
+
+std::vector<Categoria> Sistema::cargarCategorias() {
+    std::ifstream lectura("./data/categorias.csv");
+    std::vector<Categoria> categorias;
+    std::string linea;
+    std::getline(lectura, linea);
+    while (!lectura.eof()) {
+        getline(lectura, linea);
+        Categoria c = Categoria::fromCSV(linea);
+        categorias.push_back(c);
+    }
+    return categorias;
 }
