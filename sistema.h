@@ -10,13 +10,14 @@
 #include "libro.h"
 #include "Persona/cliente.h"
 #include "prestamo.h"
-
+#include "categoria.h"
 class Sistema {
 private:
     std::vector<Prestamo> prestamos;
     std::vector<Libro> libro;
     std::vector<Cliente> cliente;
     std::vector<Persona> persona;
+    std::vector<Categoria>categorias;
 
 public:
     Sistema();
@@ -41,6 +42,8 @@ public:
     static std::vector<Cliente> cargarClientes();
 
     static std::vector<Persona> cargarPersonas();
+    
+    static std::vector<Categoria> cargarCategorias();
 
 };
 
