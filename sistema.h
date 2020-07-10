@@ -36,6 +36,7 @@ public:
 
     static std::vector<Libro> cargarLibros();
 
+    static std::vector<Persona> cargarPersonas();
 };
 
 

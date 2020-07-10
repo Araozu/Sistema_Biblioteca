@@ -40,3 +40,19 @@ std::vector<Prestamo> Sistema::cargarPrestamos() {
     return prestamos;
 }
 
+std::vector<Persona> Sistema::cargarPersonas() {
+    std::ifstream lectora("./data/personas.csv");
+    std::vector<Persona> personas;
+    std::string linea;
+
+    std::getline(lectora, linea);
+
+    while (!lectora.eof()) {
+        getline(lectora, linea);
+        Persona p = Persona::fromCSV(linea);
+        personas.push_back(p);
+    }
+
+    return personas;
+}
+
