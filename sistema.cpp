@@ -73,4 +73,15 @@ std::vector<Persona> Sistema::cargarPersonas() {
 
     return personas;
 }
-
+std::vector<Categoria> Sistema::cargarCategorias(){
+	std::ifstream lectura("./data/categorias.csv");
+	std::vector<Categoria> categorias;
+	std::string linea;
+	std::getline(lectura, linea);
+	while(!lectura.eof()){
+		getline(lectura,linea);
+		Categoria c = Categoria::fromCSV(linea);
+		categorias.push_back(c);
+	}
+	return categorias;
+}
