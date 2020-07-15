@@ -4,6 +4,7 @@
 
 #include "cliente.h"
 #include <sstream>
+#include "../Excepciones/excepcionCsvIncorrecto.h"
 
 Cliente::Cliente(const std::string &nombres, const std::string &apellidos, int dni, int telefono,
                  const std::string &direccion) : Persona(nombres, apellidos, dni, telefono, direccion) {}
@@ -32,8 +33,28 @@ Cliente Cliente::fromCSV(const std::string &csv) {
         }
     }
 
-    int dni = std::stoi(fragmentos[2]);
-    int telefono = std::stoi(fragmentos[3]);
-    Cliente c{fragmentos[0], fragmentos[1], dni, telefono, fragmentos[4]};
-    return c;
+    try {
+        int dni = std::stoi(fragmentos[2]);
+        int telefono = std::stoi(fragmentos[3]);
+        Cliente c{fragmentos[0], fragmentos[1], dni, telefono, fragmentos[4]};
+        return c;
+    } catch (std::invalid_argument) {
+        std::stringstream s;
+        s << "Error al intentar convertir datos CSV a Cliente. Argumento invalido." << std::endl
+          << "El string causante es:" << std::endl
+          << csv;
+        throw ExcepcionCSVIncorrecto(s.str());
+    } catch (std::out_of_range) {
+        std::stringstream s;
+        s << "Error al intentar convertir datos CSV a Cliente. Datos fuera de los rangos permitidos." << std::endl
+          << "El string causante es:" << std::endl
+          << csv;
+        throw ExcepcionCSVIncorrecto(s.str());
+    } catch (...) {
+        std::stringstream s;
+        s << "Error al intentar convertir datos CSV a Cliente." << std::endl
+          << "El string causante es:" << std::endl
+          << csv;
+        throw ExcepcionCSVIncorrecto(s.str());
+    }
 }
