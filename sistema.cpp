@@ -5,7 +5,11 @@
 #include "sistema.h"
 
 Sistema::Sistema() {
-    // prestamos = Sistema::cargarPrestamos();
+    prestamos = Sistema::cargarPrestamos();
+    libros = Sistema::cargarLibros();
+    clientes = Sistema::cargarClientes();
+    personas = Sistema::cargarPersonas();
+    categorias = Sistema::cargarCategorias();
 }
 
 std::vector<Libro> Sistema::cargarLibros() {

@@ -12,7 +12,7 @@ private:
     int codigo;
     std::string nombre;
     int codigoAutor;
-    std::string fechaPublicacion;  // TODO: Cambiar a un objeto
+    std::string fechaPublicacion;
     int codigoCategoria;  // Biologia/Matematica/etc
 
 public:

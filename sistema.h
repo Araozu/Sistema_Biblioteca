@@ -14,9 +14,9 @@
 class Sistema {
 private:
     std::vector<Prestamo> prestamos;
-    std::vector<Libro> libro;
-    std::vector<Cliente> cliente;
-    std::vector<Persona> persona;
+    std::vector<Libro> libros;
+    std::vector<Cliente> clientes;
+    std::vector<Persona> personas;
     std::vector<Categoria>categorias;
 
 public:
