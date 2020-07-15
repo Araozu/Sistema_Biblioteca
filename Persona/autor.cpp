@@ -3,6 +3,7 @@
 //
 
 #include "autor.h"
+#include "../Excepciones/excepcionCsvIncorrecto.h"
 
 Autor::Autor(std::string nombres, std::string apellidos, int dni, int telefono, std::string direccion)
         : Persona(nombres, apellidos, dni, telefono, direccion) {}
@@ -31,8 +32,29 @@ Autor Autor::fromCSV(const std::string &csv) {
         }
     }
 
-    int dni = std::stoi(fragmentos[2]);
-    int telefono = std::stoi(fragmentos[3]);
-    Autor a{fragmentos[0], fragmentos[1], dni, telefono, fragmentos[4]};
-    return a;
+    try {
+        int dni = std::stoi(fragmentos[2]);
+        int telefono = std::stoi(fragmentos[3]);
+        Autor a{fragmentos[0], fragmentos[1], dni, telefono, fragmentos[4]};
+        return a;
+    } catch (std::invalid_argument) {
+        std::stringstream s;
+        s << "Error al intentar convertir datos CSV a Autor. Argumento invalido." << std::endl
+          << "El string causante es:" << std::endl
+          << csv;
+        throw ExcepcionCSVIncorrecto(s.str());
+    } catch (std::out_of_range) {
+        std::stringstream s;
+        s << "Error al intentar convertir datos CSV a Autor. Datos fuera de los rangos permitidos." << std::endl
+          << "El string causante es:" << std::endl
+          << csv;
+        throw ExcepcionCSVIncorrecto(s.str());
+    } catch (...) {
+        std::stringstream s;
+        s << "Error al intentar convertir datos CSV a Autor." << std::endl
+          << "El string causante es:" << std::endl
+          << csv;
+        throw ExcepcionCSVIncorrecto(s.str());
+    }
+
 }
