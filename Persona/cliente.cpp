@@ -3,9 +3,22 @@
 //
 
 #include "cliente.h"
+#include <sstream>
 
 Cliente::Cliente(const std::string &nombres, const std::string &apellidos, int dni, int telefono,
                  const std::string &direccion) : Persona(nombres, apellidos, dni, telefono, direccion) {}
+
+std::string Cliente::toCSV() {
+    std::stringstream sstream;
+
+    sstream << nombres << ","
+            << apellidos << ","
+            << dni << ","
+            << telefono << ","
+            << direccion;
+
+    return sstream.str();
+}
 
 Cliente Cliente::fromCSV(const std::string &csv) {
     std::string fragmentos[5];

@@ -9,6 +9,18 @@ Autor::Autor(std::string nombres, std::string apellidos, int dni, int telefono, 
 
 }
 
+std::string Autor::toCSV() {
+    std::stringstream sstream;
+
+    sstream << nombres << ","
+            << apellidos << ","
+            << dni << ","
+            << telefono << ","
+            << direccion;
+
+    return sstream.str();
+}
+
 Autor Autor::fromCSV(const std::string &csv) {
     std::string fragmentos[5];
     int n = 0;

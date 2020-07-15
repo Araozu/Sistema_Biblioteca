@@ -8,7 +8,7 @@
 #include <iostream>
 
 class Persona {
-private:
+protected:
     std::string nombres;
     std::string apellidos;
     int dni;
@@ -40,7 +40,7 @@ public:
 
     static Persona crearPersonaPorConsola();
 
-    std::string toCSV();
+    virtual std::string toCSV();
 
     static Persona fromCSV(const std::string &csv);
 
