@@ -5,6 +5,7 @@
 #ifndef SISTEMABIBLIOTECA_AUTOR_H
 #define SISTEMABIBLIOTECA_AUTOR_H
 #include "persona.h"
+#include <sstream>
 
 class Autor: public Persona {
 public:

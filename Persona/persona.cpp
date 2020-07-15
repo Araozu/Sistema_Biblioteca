@@ -3,7 +3,7 @@
 //
 #include "persona.h"
 #include <sstream>
-#include <vector>
+#include "../Excepciones/excepcionCsvIncorrecto.h"
 
 using namespace std;
 
@@ -121,7 +121,6 @@ Persona Persona::crearPersonaPorConsola() {
 
     Persona persona(nombres, apellidos, dni, telefono, direccion);
     return persona;
-
 }
 
 std::string Persona::toCSV() {
@@ -148,8 +147,29 @@ Persona Persona::fromCSV(const std::string &csv) {
         }
     }
 
-    int dni = std::stoi(fragmentos[2]);
-    int telefono = std::stoi(fragmentos[3]);
-    Persona p{fragmentos[0], fragmentos[1], dni, telefono, fragmentos[4]};
-    return p;
+    try {
+        int dni = std::stoi(fragmentos[2]);
+        int telefono = std::stoi(fragmentos[3]);
+        Persona p{fragmentos[0], fragmentos[1], dni, telefono, fragmentos[4]};
+        return p;
+    } catch (std::invalid_argument) {
+        std::stringstream s;
+        s << "Error al intentar convertir datos CSV a Persona. Argumento invalido." << std::endl
+          << "El string causante es:" << std::endl
+          << csv;
+        throw ExcepcionCSVIncorrecto(s.str());
+    } catch (std::out_of_range) {
+        std::stringstream s;
+        s << "Error al intentar convertir datos CSV a Persona. Datos fuera de los rangos permitidos." << std::endl
+          << "El string causante es:" << std::endl
+          << csv;
+        throw ExcepcionCSVIncorrecto(s.str());
+    } catch (...) {
+        std::stringstream s;
+        s << "Error al intentar convertir datos CSV a Persona." << std::endl
+          << "El string causante es:" << std::endl
+          << csv;
+        throw ExcepcionCSVIncorrecto(s.str());
+    }
+
 }
