@@ -4,7 +4,7 @@
 
 #include <sstream>
 #include "libro.h"
-
+#include "Excepciones/excepcionCsvIncorrecto.h"
 
 Libro::Libro(int codigo, std::string nombre, int autor, std::string fechaPublicacion, int codigoCat) :
         codigo(codigo), nombre(nombre), codigoAutor(autor), fechaPublicacion(fechaPublicacion),
@@ -104,25 +104,41 @@ Libro Libro::fromCSV(std::string csv) {
 
     std::string nombre, fechaPublicacion, aux;
 
-    for (int i = 0; i < csv.size(); i++) {
-        if (csv[i] == ',') {
+    for (char i : csv) {
+        if (i == ',') {
             n++;
         } else {
-            datos[n] += csv[i];
+            datos[n] += i;
         }
     }
-    codigo = atoi(datos[0].c_str());
+    codigo = std::stoi(datos[0]);
 
-    // TODO: Usar un menu para obtener el Autor
-    // autor = atoi(datos[1].c_str());
-    nombre = datos[2];
-    fechaPublicacion = datos[3];
-    tema = atoi(datos[4].c_str());
+    try {
+        // TODO: Usar un menu para obtener el Autor
+        // autor = atoi(datos[1].c_str());
+        nombre = datos[2];
+        fechaPublicacion = datos[3];
+        tema = atoi(datos[4].c_str());
 
-    Libro nuevoLibro(codigo, nombre, 0, fechaPublicacion, tema);
-    return nuevoLibro;
+        Libro nuevoLibro(codigo, nombre, 0, fechaPublicacion, tema);
+        return nuevoLibro;
+    } catch (std::invalid_argument) {
+        std::stringstream s;
+        s << "Error al intentar convertir datos CSV a Libro. Argumento invalido." << std::endl
+          << "El string causante es:" << std::endl
+          << csv;
+        throw ExcepcionCSVIncorrecto(s.str());
+    } catch (std::out_of_range) {
+        std::stringstream s;
+        s << "Error al intentar convertir datos CSV a Libro. Datos fuera de los rangos permitidos." << std::endl
+          << "El string causante es:" << std::endl
+          << csv;
+        throw ExcepcionCSVIncorrecto(s.str());
+    } catch (...) {
+        std::stringstream s;
+        s << "Error al intentar convertir datos CSV a Libro." << std::endl
+          << "El string causante es:" << std::endl
+          << csv;
+        throw ExcepcionCSVIncorrecto(s.str());
+    }
 }
-
-
-
-

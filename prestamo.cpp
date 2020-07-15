@@ -1,10 +1,10 @@
 //
 // Created by Fernando on 04/06/2020.
 //
-#include <iostream>
 #include <sstream>
 #include "prestamo.h"
 #include <cstdlib>
+#include "Excepciones/excepcionCsvIncorrecto.h"
 
 Prestamo::Prestamo(int _codigoLibro, int _dniCliente, std::string _fechaPrestamo, std::string _fechaDevolucion) {
     codigoLibro = _codigoLibro;
@@ -77,12 +77,33 @@ Prestamo Prestamo::fromCSV(std::string csv) {
         }
     }
 
-    codigo = atoi(datos[0].c_str());
-    dni = atoi(datos[1].c_str());
-    prestamo = datos[2];
-    devolucion = datos[3];
+    try {
+        codigo = atoi(datos[0].c_str());
+        dni = atoi(datos[1].c_str());
+        prestamo = datos[2];
+        devolucion = datos[3];
 
-    Prestamo nuevoPrestamo(codigo, dni, prestamo, devolucion);
-    return nuevoPrestamo;
+        Prestamo nuevoPrestamo(codigo, dni, prestamo, devolucion);
+        return nuevoPrestamo;
+    } catch (std::invalid_argument) {
+        std::stringstream s;
+        s << "Error al intentar convertir datos CSV a Prestamo. Argumento invalido." << std::endl
+          << "El string causante es:" << std::endl
+          << csv;
+        throw ExcepcionCSVIncorrecto(s.str());
+    } catch (std::out_of_range) {
+        std::stringstream s;
+        s << "Error al intentar convertir datos CSV a Prestamo. Datos fuera de los rangos permitidos." << std::endl
+          << "El string causante es:" << std::endl
+          << csv;
+        throw ExcepcionCSVIncorrecto(s.str());
+    } catch (...) {
+        std::stringstream s;
+        s << "Error al intentar convertir datos CSV a Prestamo." << std::endl
+          << "El string causante es:" << std::endl
+          << csv;
+        throw ExcepcionCSVIncorrecto(s.str());
+    }
+
 }
 

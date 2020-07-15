@@ -4,6 +4,7 @@
 #include "categoria.h"
 #include <cstdlib>
 #include <sstream>
+#include "Excepciones/excepcionCsvIncorrecto.h"
 
 Categoria::Categoria(std::string _nombre, int _id) {
     nombre = _nombre;
@@ -46,11 +47,31 @@ Categoria Categoria::fromCSV(std::string csv) {
         }
     }
 
-    nombre = datos[0];
-    id = atoi(datos[1].c_str());
+    try {
+        nombre = datos[0];
+        id = std::stoi(datos[1]);
 
-    Categoria nuevoCategoria(nombre, id);
-    return nuevoCategoria;
+        Categoria nuevoCategoria(nombre, id);
+        return nuevoCategoria;
+    } catch (std::invalid_argument) {
+        std::stringstream s;
+        s << "Error al intentar convertir datos CSV a Categoria. Argumento invalido." << std::endl
+          << "El string causante es:" << std::endl
+          << csv;
+        throw ExcepcionCSVIncorrecto(s.str());
+    } catch (std::out_of_range) {
+        std::stringstream s;
+        s << "Error al intentar convertir datos CSV a Categoria. Datos fuera de los rangos permitidos." << std::endl
+          << "El string causante es:" << std::endl
+          << csv;
+        throw ExcepcionCSVIncorrecto(s.str());
+    } catch (...) {
+        std::stringstream s;
+        s << "Error al intentar convertir datos CSV a Categoria." << std::endl
+          << "El string causante es:" << std::endl
+          << csv;
+        throw ExcepcionCSVIncorrecto(s.str());
+    }
 }
 
 Categoria Categoria::crearCategoriaPorConsola() {
@@ -64,7 +85,7 @@ Categoria Categoria::crearCategoriaPorConsola() {
 
         std::cout << "Ingrese categoria";
     } while (true);
-    
-    Categoria categoria1(categoria,0);
-    return    categoria1;
+
+    Categoria categoria1(categoria, 0);
+    return categoria1;
 }
