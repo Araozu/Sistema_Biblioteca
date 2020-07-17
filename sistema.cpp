@@ -4,7 +4,7 @@
 
 #include "sistema.h"
 
-Sistema::Sistema() {
+Sistema::Sistema(bool esAdmin): esAdmin(esAdmin) {
     std::cout << "Recuperando datos..." << std::endl;
     prestamos = Sistema::cargarPrestamos();
     libros = Sistema::cargarLibros();

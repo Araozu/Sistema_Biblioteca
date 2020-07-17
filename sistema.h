@@ -14,6 +14,7 @@
 
 class Sistema {
 private:
+    bool esAdmin;
     std::vector<Prestamo> prestamos;
     std::vector<Libro> libros;
     std::vector<Cliente> clientes;
@@ -22,7 +23,7 @@ private:
     std::vector<Categoria>categorias;
 
 public:
-    Sistema();
+    Sistema(bool esAdmin);
     ~Sistema();
 
     void run();
