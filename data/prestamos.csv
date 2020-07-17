@@ -1,5 +1,5 @@
-codigoLibro,dniCliente,fechaPrestamo,fechaDevolucion,devuelto
-10         ,20        ,10/02/13     ,20/20/30       ,0
-1          ,67        ,11/03/16     ,20/20/30       ,0
-2          ,87        ,12/04/17     ,20/20/30       ,0
-4          ,54        ,13/07/20     ,20/20/30       ,0
+codigoPrestamo,codigoLibro,dniCliente,fechaPrestamo,fechaDevolucion,devuelto
+1,10,20,10/02/13,20/20/30,0
+2,1,67,11/03/16,20/20/30,0
+3,2,87,12/04/17,20/20/30,0
+4,4,54,13/07/20,20/20/30,0

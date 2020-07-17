@@ -8,14 +8,22 @@
 
 class Prestamo {
 private:
+    int codigoPrestamo;
     int codigoLibro;
     int dniCliente;
     std::string fechaPrestamo;
     std::string fechaDevolucion;
     bool devuelto;
+public:
+    int getCodigoPrestamo() const;
+
+    void setCodigoPrestamo(int codigoPrestamo);
+
+    void setDevuelto(bool devuelto);
 
 public:
-    Prestamo(int codigoLibro, int dniCliente, std::string fechaPrestamo, std::string fechaDevolucion);
+    Prestamo(int codigoPrestamo, int codigoLibro, int dniCliente, std::string fechaPrestamo,
+            std::string fechaDevolucion, bool devuelto);
 
     int getCodigoLibro() const;
 

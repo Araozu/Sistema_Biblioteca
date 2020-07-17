@@ -6,12 +6,10 @@
 #include <cstdlib>
 #include "Excepciones/excepcionCsvIncorrecto.h"
 
-Prestamo::Prestamo(int _codigoLibro, int _dniCliente, std::string _fechaPrestamo, std::string _fechaDevolucion) {
-    codigoLibro = _codigoLibro;
-    dniCliente = _dniCliente;
-    fechaPrestamo = _fechaPrestamo;
-    fechaDevolucion = _fechaDevolucion;
-    devuelto = false;
+Prestamo::Prestamo(int codigoPrestamo, int codigoLibro, int dniCliente, std::string fechaPrestamo,
+                   std::string fechaDevolucion, bool devuelto) :
+        codigoPrestamo(codigoPrestamo), codigoLibro(codigoLibro), dniCliente(dniCliente), fechaPrestamo(fechaPrestamo),
+        fechaDevolucion(fechaDevolucion), devuelto(devuelto) {
 }
 
 int Prestamo::getCodigoLibro() const {
@@ -65,9 +63,10 @@ std::string Prestamo::toCSV() {
 }
 
 Prestamo Prestamo::fromCSV(std::string csv) {
-    std::string datos[5];
-    int codigo, dni, n = 0;
-    std::string prestamo, devolucion, aux;
+    std::string datos[6];
+    int codigoPrestamo, codigoLibro, dni, n = 0;
+    bool devuelto = false;
+    std::string fechaPrestamo, fechaDevolucion;
 
     for (char i : csv) {
         if (i == ',') {
@@ -78,12 +77,14 @@ Prestamo Prestamo::fromCSV(std::string csv) {
     }
 
     try {
-        codigo = atoi(datos[0].c_str());
-        dni = atoi(datos[1].c_str());
-        prestamo = datos[2];
-        devolucion = datos[3];
+        codigoPrestamo = std::stoi(datos[0]);
+        codigoLibro = std::stoi(datos[1]);
+        dni = std::stoi(datos[2]);
+        fechaPrestamo = datos[3];
+        fechaDevolucion = datos[4];
+        if (std::stoi(datos[5]) == 1) devuelto = true;
 
-        Prestamo nuevoPrestamo(codigo, dni, prestamo, devolucion);
+        Prestamo nuevoPrestamo(codigoPrestamo, codigoLibro, dni, fechaPrestamo, fechaDevolucion, devuelto);
         return nuevoPrestamo;
     } catch (std::invalid_argument) {
         std::stringstream s;
@@ -105,5 +106,17 @@ Prestamo Prestamo::fromCSV(std::string csv) {
         throw ExcepcionCSVIncorrecto(s.str());
     }
 
+}
+
+int Prestamo::getCodigoPrestamo() const {
+    return codigoPrestamo;
+}
+
+void Prestamo::setCodigoPrestamo(int codigoPrestamo) {
+    Prestamo::codigoPrestamo = codigoPrestamo;
+}
+
+void Prestamo::setDevuelto(bool devuelto) {
+    Prestamo::devuelto = devuelto;
 }
 

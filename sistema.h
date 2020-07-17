@@ -36,14 +36,16 @@ public:
     Libro* listaLibros();
 
     static std::vector<Prestamo> cargarPrestamos();
-
     static std::vector<Libro> cargarLibros();
-
     static std::vector<Cliente> cargarClientes();
-
     static std::vector<Persona> cargarPersonas();
-    
     static std::vector<Categoria> cargarCategorias();
+
+    int sigCodigoPrestamo();
+    int sigCodigoLibro();
+    int sigCodigoCliente();
+    int sigCodigoPersona();
+    int sigCodigoCategoria();
 
 };
 
