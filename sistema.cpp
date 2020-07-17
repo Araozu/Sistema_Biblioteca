@@ -103,9 +103,18 @@ int Sistema::sigCodigoPrestamo() {
 
 int Sistema::sigCodigoLibro() {
     int sigCod = -1;
-    for (const auto& p: libros) {
-        int codigoLibro = p.getCodigo();
+    for (const auto& l: libros) {
+        int codigoLibro = l.getCodigo();
         if (codigoLibro > sigCod) sigCod = codigoLibro;
+    }
+    return sigCod + 1;
+}
+
+int Sistema::sigCodigoCategoria() {
+    int sigCod = -1;
+    for (const auto& c: categorias) {
+        int codigoCategoria = c.getId();
+        if (codigoCategoria > sigCod) sigCod = codigoCategoria;
     }
     return sigCod + 1;
 }

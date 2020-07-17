@@ -43,8 +43,6 @@ public:
 
     int sigCodigoPrestamo();
     int sigCodigoLibro();
-    int sigCodigoCliente();
-    int sigCodigoPersona();
     int sigCodigoCategoria();
 
 };

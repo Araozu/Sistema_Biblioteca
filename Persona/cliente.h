@@ -6,7 +6,7 @@
 #define SISTEMABIBLIOTECA_CLIENTE_H
 #include "persona.h"
 
-class Cliente: Persona {
+class Cliente: public Persona {
 public:
     Cliente(const std::string &nombres, const std::string &apellidos, int dni, int telefono,
             const std::string &direccion);
