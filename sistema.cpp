@@ -94,9 +94,18 @@ std::vector<Categoria> Sistema::cargarCategorias() {
 
 int Sistema::sigCodigoPrestamo() {
     int sigCod = -1;
-    for (const Prestamo& p: prestamos) {
+    for (const auto& p: prestamos) {
         int codigoPrestamo = p.getCodigoPrestamo();
         if (codigoPrestamo > sigCod) sigCod = codigoPrestamo;
+    }
+    return sigCod + 1;
+}
+
+int Sistema::sigCodigoLibro() {
+    int sigCod = -1;
+    for (const auto& p: libros) {
+        int codigoLibro = p.getCodigo();
+        if (codigoLibro > sigCod) sigCod = codigoLibro;
     }
     return sigCod + 1;
 }
