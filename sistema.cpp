@@ -13,6 +13,10 @@ Sistema::Sistema() {
     categorias = Sistema::cargarCategorias();
 }
 
+Sistema::~Sistema() {
+    std::cout << "Adios mundo :c" << std::endl;
+}
+
 std::vector<Libro> Sistema::cargarLibros() {
     std::ifstream lectora("./data/libros.csv");
     std::vector<Libro> libros;
@@ -22,6 +26,7 @@ std::vector<Libro> Sistema::cargarLibros() {
 
     while (!lectora.eof()) {
         getline(lectora, linea);
+        if (linea.empty()) break;
         Libro l = Libro::fromCSV(linea);
         libros.push_back(l);
     }
@@ -38,6 +43,7 @@ std::vector<Prestamo> Sistema::cargarPrestamos() {
 
     while (!lectora.eof()) {
         getline(lectora, linea);
+        if (linea.empty()) break;
         Prestamo p = Prestamo::fromCSV(linea);
         prestamos.push_back(p);
     }
@@ -54,6 +60,7 @@ std::vector<Cliente> Sistema::cargarClientes() {
 
     while (!lectora.eof()) {
         getline(lectora, linea);
+        if (linea.empty()) break;
         Cliente c = Cliente::fromCSV(linea);
         clientes.push_back(c);
     }
@@ -70,6 +77,7 @@ std::vector<Autor> Sistema::cargarAutores() {
 
     while (!lectora.eof()) {
         getline(lectora, linea);
+        if (linea.empty()) break;
         Autor a = Autor::fromCSV(linea);
         autores.push_back(a);
     }
@@ -86,8 +94,8 @@ std::vector<Persona> Sistema::cargarPersonas() {
 
     while (!lectora.eof()) {
         getline(lectora, linea);
+        if (linea.empty()) break;
         Persona p = Persona::fromCSV(linea);
-
         personas.push_back(p);
     }
 
@@ -101,6 +109,7 @@ std::vector<Categoria> Sistema::cargarCategorias() {
     std::getline(lectura, linea);
     while (!lectura.eof()) {
         getline(lectura, linea);
+        if (linea.empty()) break;
         Categoria c = Categoria::fromCSV(linea);
         categorias.push_back(c);
     }
@@ -133,3 +142,4 @@ int Sistema::sigCodigoCategoria() {
     }
     return sigCod + 1;
 }
+

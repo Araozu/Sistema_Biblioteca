@@ -22,18 +22,14 @@ private:
 
 public:
     Sistema();
+    ~Sistema();
 
     void agregarLibro(Libro libro);
-
     void removerLibro(Libro libro);
-
     void actualizarLibro();                 // TODO: Identificar parametros
     Libro buscarLibro(std::string nombre);
-
     void prestarLibro(Libro libro, Cliente cliente);
-
     void devolverLibro(Libro libro, Cliente cliente);
-
     Libro* listaLibros();
 
     static std::vector<Prestamo> cargarPrestamos();
