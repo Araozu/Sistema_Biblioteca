@@ -8,6 +8,7 @@ Sistema::Sistema() {
     prestamos = Sistema::cargarPrestamos();
     libros = Sistema::cargarLibros();
     clientes = Sistema::cargarClientes();
+    autores = Sistema::cargarAutores();
     personas = Sistema::cargarPersonas();
     categorias = Sistema::cargarCategorias();
 }
@@ -55,11 +56,25 @@ std::vector<Cliente> Sistema::cargarClientes() {
         getline(lectora, linea);
         Cliente c = Cliente::fromCSV(linea);
         clientes.push_back(c);
-
     }
 
     return clientes;
+}
 
+std::vector<Autor> Sistema::cargarAutores() {
+    std::ifstream lectora("./data/autores.csv");
+    std::vector<Autor> autores;
+    std::string linea;
+
+    std::getline(lectora, linea);
+
+    while (!lectora.eof()) {
+        getline(lectora, linea);
+        Autor a = Autor::fromCSV(linea);
+        autores.push_back(a);
+    }
+
+    return autores;
 }
 
 std::vector<Persona> Sistema::cargarPersonas() {

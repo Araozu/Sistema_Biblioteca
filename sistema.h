@@ -16,6 +16,7 @@ private:
     std::vector<Prestamo> prestamos;
     std::vector<Libro> libros;
     std::vector<Cliente> clientes;
+    std::vector<Autor> autores;
     std::vector<Persona> personas;
     std::vector<Categoria>categorias;
 
@@ -38,6 +39,7 @@ public:
     static std::vector<Prestamo> cargarPrestamos();
     static std::vector<Libro> cargarLibros();
     static std::vector<Cliente> cargarClientes();
+    static std::vector<Autor> cargarAutores();
     static std::vector<Persona> cargarPersonas();
     static std::vector<Categoria> cargarCategorias();
 
