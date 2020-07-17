@@ -11,6 +11,7 @@
 #include "Persona/cliente.h"
 #include "prestamo.h"
 #include "categoria.h"
+
 class Sistema {
 private:
     std::vector<Prestamo> prestamos;
@@ -23,6 +24,8 @@ private:
 public:
     Sistema();
     ~Sistema();
+
+    void run();
 
     void agregarLibro(Libro libro);
     void removerLibro(Libro libro);

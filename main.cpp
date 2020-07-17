@@ -3,5 +3,6 @@
 
 int main() {
     Sistema s;
+    s.run();
     return 0;
 }

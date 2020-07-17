@@ -5,16 +5,35 @@
 #include "sistema.h"
 
 Sistema::Sistema() {
+    std::cout << "Recuperando datos..." << std::endl;
     prestamos = Sistema::cargarPrestamos();
     libros = Sistema::cargarLibros();
     clientes = Sistema::cargarClientes();
     autores = Sistema::cargarAutores();
     personas = Sistema::cargarPersonas();
     categorias = Sistema::cargarCategorias();
+    std::cout << "Listo." << std::endl;
 }
 
 Sistema::~Sistema() {
-    std::cout << "Adios mundo :c" << std::endl;
+    std::cout << "Almacenando datos a memoria secundaria..." << std::endl;
+    std::cout << "Listo." << std::endl;
+}
+
+void Sistema::run() {
+    int opcion;
+    do {
+
+        std::cout << std::endl << "Menu Principal" << std::endl << std::endl
+                  << "1: Ver libros" << std::endl
+                  << "2: Buscar un libro" << std::endl
+                  << "3: Ver autores" << std::endl
+                  << "4: Buscar un autor" << std::endl
+                  << "Ingresa una opcion:";
+        std::cin >> opcion;
+
+    } while (opcion != -1);
+
 }
 
 std::vector<Libro> Sistema::cargarLibros() {
