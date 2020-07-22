@@ -32,10 +32,26 @@ void Sistema::run() {
 
         std::cout << std::endl << "Menu Principal" << std::endl << std::endl
                   << "1: Ver libros" << std::endl
-                  << "2: Buscar un libro" << std::endl
-                  << "3: Ver autores" << std::endl
-                  << "4: Buscar un autor" << std::endl
-                  << "Ingresa una opcion:";
+                  << "2: Buscar un libro por nombre" << std::endl
+                  << "3: Buscar un libro por autor" << std::endl
+                  << "4: Buscar un libro por categoria" << std::endl
+                  << "5: Ver autores" << std::endl
+                  << "6: Buscar un autor" << std::endl;
+
+        if (esAdmin) {
+            std::cout << "7: Registrar un prestamo" << std::endl
+                      << "8: Registrar una devolucion" << std::endl
+                      << "9: Registrar un usuario" << std::endl
+                      << "10: Registrar un autor" << std::endl
+                      << "11: Registrar un libro" << std::endl
+                      << "12: Eliminar un usuario" << std::endl
+                      << "13: Eliminar un autor" << std::endl
+                      << "14: Eliminar un libro" << std::endl;
+        }
+
+        std::cout << "0: Salir" << std::endl
+                  << "Escoge una opcion:";
+
         std::cin >> opcion;
 
     } while (opcion != -1);

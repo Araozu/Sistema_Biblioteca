@@ -29,48 +29,37 @@ public:
 
     void run();
 
-    void agregarLibro();
-
-    void removerLibro();
-
-    void actualizarLibro();
-
-    void buscarLibro();
-
-    void prestarLibro();
-
-    void devolverLibro();
-
-    void listaLibros();
+    void verLibros();
+    void buscarLibroPorNombre();
+    void buscarLibroPorAutor();
+    void buscarlibroPorCategoria();
+    void verAutores();
+    void buscarAutor();
+    void registrarPrestamo();
+    void registrarDevolucion();
+    void registrarUsuario();
+    void registrarAutor();
+    void registrarLibro();
+    void eliminarUsuario();
+    void eliminarAutor();
+    void eliminarLibro();
 
     static std::vector<Prestamo> cargarPrestamos();
-
     static std::vector<Libro> cargarLibros();
-
     static std::vector<Cliente> cargarClientes();
-
     static std::vector<Autor> cargarAutores();
-
     static std::vector<Persona> cargarPersonas();
-
     static std::vector<Categoria> cargarCategorias();
 
     int sigCodigoPrestamo();
-
     int sigCodigoLibro();
-
     int sigCodigoCategoria();
 
     void almacenarPrestamos();
-
     void almacenarLibros();
-
     void almacenarClientes();
-
     void almacenarAutores();
-
     void almacenarPersonas();
-
     void almacenarCategorias();
 
 };
