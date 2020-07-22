@@ -17,6 +17,12 @@ Sistema::Sistema(bool esAdmin): esAdmin(esAdmin) {
 
 Sistema::~Sistema() {
     std::cout << "Almacenando datos a memoria secundaria..." << std::endl;
+    almacenarAutores();
+    almacenarCategorias();
+    almacenarClientes();
+    almacenarLibros();
+    almacenarPersonas();
+    almacenarPrestamos();
     std::cout << "Listo." << std::endl;
 }
 
@@ -155,10 +161,34 @@ int Sistema::sigCodigoLibro() {
 
 int Sistema::sigCodigoCategoria() {
     int sigCod = -1;
-    for (const auto& c: categorias) {
+    for (const auto &c: categorias) {
         int codigoCategoria = c.getId();
         if (codigoCategoria > sigCod) sigCod = codigoCategoria;
     }
     return sigCod + 1;
+}
+
+void Sistema::almacenarPrestamos() {
+
+}
+
+void Sistema::almacenarLibros() {
+
+}
+
+void Sistema::almacenarClientes() {
+
+}
+
+void Sistema::almacenarAutores() {
+
+}
+
+void Sistema::almacenarPersonas() {
+
+}
+
+void Sistema::almacenarCategorias() {
+
 }
 

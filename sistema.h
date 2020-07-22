@@ -20,32 +20,58 @@ private:
     std::vector<Cliente> clientes;
     std::vector<Autor> autores;
     std::vector<Persona> personas;
-    std::vector<Categoria>categorias;
+    std::vector<Categoria> categorias;
 
 public:
     Sistema(bool esAdmin);
+
     ~Sistema();
 
     void run();
 
-    void agregarLibro(Libro libro);
-    void removerLibro(Libro libro);
-    void actualizarLibro();                 // TODO: Identificar parametros
-    Libro buscarLibro(std::string nombre);
-    void prestarLibro(Libro libro, Cliente cliente);
-    void devolverLibro(Libro libro, Cliente cliente);
-    Libro* listaLibros();
+    void agregarLibro();
+
+    void removerLibro();
+
+    void actualizarLibro();
+
+    void buscarLibro();
+
+    void prestarLibro();
+
+    void devolverLibro();
+
+    void listaLibros();
 
     static std::vector<Prestamo> cargarPrestamos();
+
     static std::vector<Libro> cargarLibros();
+
     static std::vector<Cliente> cargarClientes();
+
     static std::vector<Autor> cargarAutores();
+
     static std::vector<Persona> cargarPersonas();
+
     static std::vector<Categoria> cargarCategorias();
 
     int sigCodigoPrestamo();
+
     int sigCodigoLibro();
+
     int sigCodigoCategoria();
+
+    void almacenarPrestamos();
+
+    void almacenarLibros();
+
+    void almacenarClientes();
+
+    void almacenarAutores();
+
+    void almacenarPersonas();
+
+    void almacenarCategorias();
 
 };
 
