@@ -54,7 +54,9 @@ void Sistema::run() {
 
         std::cin >> opcion;
 
-    } while (opcion != -1);
+
+
+    } while (opcion != 0);
 
 }
 
@@ -205,6 +207,62 @@ void Sistema::almacenarPersonas() {
 }
 
 void Sistema::almacenarCategorias() {
+
+}
+
+void Sistema::verLibros() {
+
+}
+
+void Sistema::buscarLibroPorNombre() {
+
+}
+
+void Sistema::buscarLibroPorAutor() {
+
+}
+
+void Sistema::buscarlibroPorCategoria() {
+
+}
+
+void Sistema::verAutores() {
+
+}
+
+void Sistema::buscarAutor() {
+
+}
+
+void Sistema::registrarPrestamo() {
+
+}
+
+void Sistema::registrarDevolucion() {
+
+}
+
+void Sistema::registrarUsuario() {
+
+}
+
+void Sistema::registrarAutor() {
+
+}
+
+void Sistema::registrarLibro() {
+
+}
+
+void Sistema::eliminarUsuario() {
+
+}
+
+void Sistema::eliminarAutor() {
+
+}
+
+void Sistema::eliminarLibro() {
 
 }
 
