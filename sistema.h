@@ -22,6 +22,9 @@ private:
     std::vector<Persona> personas;
     std::vector<Categoria> categorias;
 
+protected:
+    Autor obtenerAutorConId(int id);
+
 public:
     Sistema(bool esAdmin);
 

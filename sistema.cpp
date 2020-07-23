@@ -3,8 +3,9 @@
 //
 
 #include "sistema.h"
+#include "./Excepciones/excepcionAutorNoEncontrado.h"
 
-Sistema::Sistema(bool esAdmin): esAdmin(esAdmin) {
+Sistema::Sistema(bool esAdmin) : esAdmin(esAdmin) {
     std::cout << "Recuperando datos..." << std::endl;
     prestamos = Sistema::cargarPrestamos();
     libros = Sistema::cargarLibros();
@@ -53,7 +54,6 @@ void Sistema::run() {
                   << "Escoge una opcion:";
 
         std::cin >> opcion;
-
 
 
     } while (opcion != 0);
@@ -161,7 +161,7 @@ std::vector<Categoria> Sistema::cargarCategorias() {
 
 int Sistema::sigCodigoPrestamo() {
     int sigCod = -1;
-    for (const auto& p: prestamos) {
+    for (const auto &p: prestamos) {
         int codigoPrestamo = p.getCodigoPrestamo();
         if (codigoPrestamo > sigCod) sigCod = codigoPrestamo;
     }
@@ -170,7 +170,7 @@ int Sistema::sigCodigoPrestamo() {
 
 int Sistema::sigCodigoLibro() {
     int sigCod = -1;
-    for (const auto& l: libros) {
+    for (const auto &l: libros) {
         int codigoLibro = l.getCodigo();
         if (codigoLibro > sigCod) sigCod = codigoLibro;
     }
@@ -215,11 +215,55 @@ void Sistema::verLibros() {
 }
 
 void Sistema::buscarLibroPorNombre() {
+    std::string nombre;
+    std::cout << "Ingresa el nombre del libro:";
+    std::getline(std::cin, nombre);
 
+    bool libroEncontrado = false;
+    for (const auto &l: libros) {
+        if (l.getNombre().find(nombre) != std::string::npos) {
+            libroEncontrado = true;
+            std::cout << "Codigo de libro     : " << l.getCodigo() << std::endl
+                      << "Nombre del libro    : " << l.getNombre() << std::endl
+                      << "Codigo del autor    : " << l.getCodigoAutor() << std::endl
+                      << "Fecha de publicacion: " << l.getFechaPublicacion() << std::endl
+                      << "Codigo de categoria : " << l.getCodigoCategoria() << std::endl
+                      << std::endl;
+        }
+    }
+
+    if (!libroEncontrado) {
+        std::cout << "No se encontro un libro con nombre '" << nombre << "'." << std::endl;
+    }
 }
 
 void Sistema::buscarLibroPorAutor() {
+    std::string nombre;
+    std::cout << "Ingresa el nombre del autor:";
+    std::getline(std::cin, nombre);
 
+    bool libroEncontrado = false;
+    for (const auto &l: libros) {
+        try {
+            Autor a = obtenerAutorConId(l.getCodigoAutor());
+            if (a.getNombres().find(nombre) != std::string::npos) {
+                libroEncontrado = true;
+                std::cout << "Codigo de libro     : " << l.getCodigo() << std::endl
+                          << "Nombre del libro    : " << l.getNombre() << std::endl
+                          << "Codigo del autor    : " << l.getCodigoAutor() << std::endl
+                          << "Fecha de publicacion: " << l.getFechaPublicacion() << std::endl
+                          << "Codigo de categoria : " << l.getCodigoCategoria() << std::endl
+                          << std::endl;
+            }
+        } catch (ExcepcionAutorNoEncontrado&) {
+            std::cerr << "Advertencia: Se intento recuperar un autor con id " << l.getCodigoAutor()
+                      << ", pero no se encontró." << std::endl;
+        }
+    }
+
+    if (!libroEncontrado) {
+        std::cout << "No se encontro un libro con autor '" << nombre << "'." << std::endl;
+    }
 }
 
 void Sistema::buscarlibroPorCategoria() {
@@ -264,5 +308,13 @@ void Sistema::eliminarAutor() {
 
 void Sistema::eliminarLibro() {
 
+}
+
+Autor Sistema::obtenerAutorConId(int id) {
+    for (const auto &a: autores) {
+        if (a.getId() == id) return a;
+    }
+
+    throw ExcepcionAutorNoEncontrado("No se pudo obtener un autor con id. En obtenerAutorConId.");
 }
 
