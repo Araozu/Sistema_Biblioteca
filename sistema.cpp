@@ -29,6 +29,7 @@ Sistema::~Sistema() {
 }
 
 void Sistema::run() {
+    std::string opcionRaw;
     int opcion;
     do {
 
@@ -52,10 +53,29 @@ void Sistema::run() {
         }
 
         std::cout << "0: Salir" << std::endl
-                  << "Escoge una opcion:";
+                  << "Escoge una opcion:" << std::endl;
 
-        std::cin >> opcion;
+        std::getline(std::cin, opcionRaw);
+        opcion = std::stoi(opcionRaw);
 
+        switch (opcion) {
+            case 0: { break; }
+            case 2: {
+                buscarLibroPorNombre();
+                break;
+            }
+            case 3: {
+                buscarLibroPorAutor();
+                break;
+            }
+            case 4: {
+                buscarlibroPorCategoria();
+                break;
+            }
+            default: {
+                std::cerr << "Opcion incorrecta." << std::endl;
+            }
+        }
 
     } while (opcion != 0);
 
@@ -224,18 +244,21 @@ void Sistema::buscarLibroPorNombre() {
     for (const auto &l: libros) {
         if (l.getNombre().find(nombre) != std::string::npos) {
             libroEncontrado = true;
-            std::cout << "Codigo de libro     : " << l.getCodigo() << std::endl
+            std::cout << std::endl
+                      << "Codigo de libro     : " << l.getCodigo() << std::endl
                       << "Nombre del libro    : " << l.getNombre() << std::endl
                       << "Codigo del autor    : " << l.getCodigoAutor() << std::endl
                       << "Fecha de publicacion: " << l.getFechaPublicacion() << std::endl
-                      << "Codigo de categoria : " << l.getCodigoCategoria() << std::endl
-                      << std::endl;
+                      << "Codigo de categoria : " << l.getCodigoCategoria() << std::endl;
         }
     }
 
     if (!libroEncontrado) {
         std::cout << "No se encontro un libro con nombre '" << nombre << "'." << std::endl;
     }
+
+    std::cout << "Presiona enter para continuar.";
+    std::cin.ignore();
 }
 
 void Sistema::buscarLibroPorAutor() {
@@ -258,7 +281,7 @@ void Sistema::buscarLibroPorAutor() {
             }
         } catch (ExcepcionAutorNoEncontrado&) {
             std::cerr << "Advertencia: Se intento recuperar un autor con id " << l.getCodigoAutor()
-                      << ", pero no se encontró." << std::endl;
+                      << ", pero no se encontro." << std::endl;
         }
     }
 
@@ -285,9 +308,9 @@ void Sistema::buscarlibroPorCategoria() {
                           << "Codigo de categoria : " << l.getCodigoCategoria() << std::endl
                           << std::endl;
             }
-        } catch (ExcepcionAutorNoEncontrado&) {
-            std::cerr << "Advertencia: Se intento recuperar un autor con id " << l.getCodigoAutor()
-                      << ", pero no se encontró." << std::endl;
+        } catch (ExcepcionCategoriaNoEncontrada&) {
+            std::cerr << "Advertencia: Se intento recuperar una categoria con id " << l.getCodigoAutor()
+                      << ", pero no se encontro." << std::endl;
         }
     }
 
