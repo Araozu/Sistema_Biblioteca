@@ -5,13 +5,14 @@
 #include "autor.h"
 #include "../Excepciones/excepcionCsvIncorrecto.h"
 
-Autor::Autor(std::string nombres, std::string apellidos, int dni, int telefono, std::string direccion)
-        : Persona(nombres, apellidos, dni, telefono, direccion) {}
+Autor::Autor(int id, std::string nombres, std::string apellidos, int dni, int telefono, std::string direccion)
+        : Persona(nombres, apellidos, dni, telefono, direccion), id(id) {}
 
 std::string Autor::toCSV() {
     std::stringstream sstream;
 
-    sstream << nombres << ","
+    sstream << id << ","
+            << nombres << ","
             << apellidos << ","
             << dni << ","
             << telefono << ","
@@ -21,7 +22,7 @@ std::string Autor::toCSV() {
 }
 
 Autor Autor::fromCSV(const std::string &csv) {
-    std::string fragmentos[5];
+    std::string fragmentos[6];
     int n = 0;
 
     for (char i : csv) {
@@ -33,9 +34,10 @@ Autor Autor::fromCSV(const std::string &csv) {
     }
 
     try {
-        int dni = std::stoi(fragmentos[2]);
-        int telefono = std::stoi(fragmentos[3]);
-        Autor a{fragmentos[0], fragmentos[1], dni, telefono, fragmentos[4]};
+        int id = std::stoi(fragmentos[0]);
+        int dni = std::stoi(fragmentos[3]);
+        int telefono = std::stoi(fragmentos[4]);
+        Autor a{id, fragmentos[1], fragmentos[2], dni, telefono, fragmentos[5]};
         return a;
     } catch (std::invalid_argument) {
         std::stringstream s;
@@ -57,4 +59,8 @@ Autor Autor::fromCSV(const std::string &csv) {
         throw ExcepcionCSVIncorrecto(s.str());
     }
 
+}
+
+int Autor::getId() const {
+    return id;
 }
