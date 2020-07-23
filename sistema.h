@@ -24,6 +24,7 @@ private:
 
 protected:
     Autor obtenerAutorConId(int id);
+    Categoria obtenerCategoriaConId(int id);
 
 public:
     Sistema(bool esAdmin);

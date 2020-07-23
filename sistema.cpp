@@ -4,6 +4,7 @@
 
 #include "sistema.h"
 #include "./Excepciones/excepcionAutorNoEncontrado.h"
+#include "./Excepciones/excepcionCategoriaNoEncontrada.h"
 
 Sistema::Sistema(bool esAdmin) : esAdmin(esAdmin) {
     std::cout << "Recuperando datos..." << std::endl;
@@ -267,7 +268,32 @@ void Sistema::buscarLibroPorAutor() {
 }
 
 void Sistema::buscarlibroPorCategoria() {
+    std::string nombre;
+    std::cout << "Ingresa el nombre del autor:";
+    std::getline(std::cin, nombre);
 
+    bool libroEncontrado = false;
+    for (const auto &l: libros) {
+        try {
+            Categoria c = obtenerCategoriaConId(l.getCodigoCategoria());
+            if (c.getNombre().find(nombre) != std::string::npos) {
+                libroEncontrado = true;
+                std::cout << "Codigo de libro     : " << l.getCodigo() << std::endl
+                          << "Nombre del libro    : " << l.getNombre() << std::endl
+                          << "Codigo del autor    : " << l.getCodigoAutor() << std::endl
+                          << "Fecha de publicacion: " << l.getFechaPublicacion() << std::endl
+                          << "Codigo de categoria : " << l.getCodigoCategoria() << std::endl
+                          << std::endl;
+            }
+        } catch (ExcepcionAutorNoEncontrado&) {
+            std::cerr << "Advertencia: Se intento recuperar un autor con id " << l.getCodigoAutor()
+                      << ", pero no se encontró." << std::endl;
+        }
+    }
+
+    if (!libroEncontrado) {
+        std::cout << "No se encontro un libro con autor '" << nombre << "'." << std::endl;
+    }
 }
 
 void Sistema::verAutores() {
@@ -316,5 +342,13 @@ Autor Sistema::obtenerAutorConId(int id) {
     }
 
     throw ExcepcionAutorNoEncontrado("No se pudo obtener un autor con id. En obtenerAutorConId.");
+}
+
+Categoria Sistema::obtenerCategoriaConId(int id) {
+    for (const auto &c: categorias) {
+        if (c.getId() == id) return c;
+    }
+
+    throw  ExcepcionCategoriaNoEncontrada("No se pudo obtener una categoria con id. En obtenerCategoriaConId");
 }
 
