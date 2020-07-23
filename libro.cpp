@@ -111,24 +111,23 @@ Libro Libro::fromCSV(std::string csv) {
             datos[n] += i;
         }
     }
-    codigo = std::stoi(datos[0]);
 
     try {
-        // TODO: Usar un menu para obtener el Autor
-        // autor = atoi(datos[1].c_str());
-        nombre = datos[2];
+        codigo = std::stoi(datos[0]);
+        nombre = datos[1];
+        int idAutor = std::stoi(datos[2]);
         fechaPublicacion = datos[3];
-        tema = atoi(datos[4].c_str());
+        tema = std::stoi(datos[4]);
 
-        Libro nuevoLibro(codigo, nombre, 0, fechaPublicacion, tema);
+        Libro nuevoLibro(codigo, nombre, idAutor, fechaPublicacion, tema);
         return nuevoLibro;
-    } catch (std::invalid_argument) {
+    } catch (std::invalid_argument &) {
         std::stringstream s;
         s << "Error al intentar convertir datos CSV a Libro. Argumento invalido." << std::endl
           << "El string causante es:" << std::endl
           << csv;
         throw ExcepcionCSVIncorrecto(s.str());
-    } catch (std::out_of_range) {
+    } catch (std::out_of_range &) {
         std::stringstream s;
         s << "Error al intentar convertir datos CSV a Libro. Datos fuera de los rangos permitidos." << std::endl
           << "El string causante es:" << std::endl
