@@ -274,7 +274,7 @@ void Sistema::buscarLibroPorAutor() {
                 libroEncontrado = true;
                 std::cout << "Codigo de libro     : " << l.getCodigo() << std::endl
                           << "Nombre del libro    : " << l.getNombre() << std::endl
-                          << "Codigo del autor    : " << l.getCodigoAutor() << std::endl
+                          << "Autor               : " << a.getNombres() << std::endl
                           << "Fecha de publicacion: " << l.getFechaPublicacion() << std::endl
                           << "Codigo de categoria : " << l.getCodigoCategoria() << std::endl
                           << std::endl;
@@ -288,11 +288,14 @@ void Sistema::buscarLibroPorAutor() {
     if (!libroEncontrado) {
         std::cout << "No se encontro un libro con autor '" << nombre << "'." << std::endl;
     }
+
+    std::cout << "Presiona enter para continuar.";
+    std::cin.ignore();
 }
 
 void Sistema::buscarlibroPorCategoria() {
     std::string nombre;
-    std::cout << "Ingresa el nombre del autor:";
+    std::cout << "Ingresa el nombre de la categoria:";
     std::getline(std::cin, nombre);
 
     bool libroEncontrado = false;
@@ -305,7 +308,7 @@ void Sistema::buscarlibroPorCategoria() {
                           << "Nombre del libro    : " << l.getNombre() << std::endl
                           << "Codigo del autor    : " << l.getCodigoAutor() << std::endl
                           << "Fecha de publicacion: " << l.getFechaPublicacion() << std::endl
-                          << "Codigo de categoria : " << l.getCodigoCategoria() << std::endl
+                          << "Categoria           : " << c.getNombre() << std::endl
                           << std::endl;
             }
         } catch (ExcepcionCategoriaNoEncontrada&) {
@@ -317,6 +320,9 @@ void Sistema::buscarlibroPorCategoria() {
     if (!libroEncontrado) {
         std::cout << "No se encontro un libro con autor '" << nombre << "'." << std::endl;
     }
+
+    std::cout << "Presiona enter para continuar.";
+    std::cin.ignore();
 }
 
 void Sistema::verAutores() {
