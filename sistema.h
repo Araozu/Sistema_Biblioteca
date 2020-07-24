@@ -44,7 +44,7 @@ public:
     void registrarUsuario();
     void registrarAutor();
     void registrarLibro();
-    void eliminarUsuario();
+    void eliminarCliente();
     void eliminarAutor();
     void eliminarLibro();
 

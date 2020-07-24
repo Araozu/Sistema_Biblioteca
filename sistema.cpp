@@ -44,10 +44,10 @@ void Sistema::run() {
         if (esAdmin) {
             std::cout << "7: Registrar un prestamo" << std::endl
                       << "8: Registrar una devolucion" << std::endl
-                      << "9: Registrar un usuario" << std::endl
+                      << "9: Registrar un cliente" << std::endl
                       << "10: Registrar un autor" << std::endl
                       << "11: Registrar un libro" << std::endl
-                      << "12: Eliminar un usuario" << std::endl
+                      << "12: Eliminar un cliente" << std::endl
                       << "13: Eliminar un autor" << std::endl
                       << "14: Eliminar un libro" << std::endl;
         }
@@ -57,6 +57,11 @@ void Sistema::run() {
 
         std::getline(std::cin, opcionRaw);
         opcion = std::stoi(opcionRaw);
+
+        if (opcion > 6 && !esAdmin) {
+            std::cerr << "Opcion invalida" << std::endl;
+            continue;
+        }
 
         switch (opcion) {
             case 0: { break; }
@@ -74,6 +79,10 @@ void Sistema::run() {
             }
             case 6: {
                 buscarAutor();
+                break;
+            }
+            case 12: {
+                eliminarCliente();
                 break;
             }
             default: {
@@ -376,8 +385,28 @@ void Sistema::registrarLibro() {
 
 }
 
-void Sistema::eliminarUsuario() {
+void Sistema::eliminarCliente() {
+    std::string dniS;
+    std::cout << "Ingresa el dni del usuario:" << std::endl;
+    std::getline(std::cin, dniS);
+    int dni = std::stoi(dniS);
 
+    bool clienteEliminado = false;
+    for (auto it = clientes.begin(); it != clientes.end(); ++it) {
+        if (it->getDni() == dni) {
+            std::cout << "Cliente eliminado." << std::endl;
+            clienteEliminado = true;
+            clientes.erase(it);
+            break;
+        }
+    }
+
+    if (!clienteEliminado) {
+        std::cout << "No se encontro un usuario con dni '" << dni << "'." << std::endl;
+    }
+
+    std::cout << "Presiona enter para continuar.";
+    std::cin.ignore();
 }
 
 void Sistema::eliminarAutor() {
