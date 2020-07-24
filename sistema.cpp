@@ -12,7 +12,6 @@ Sistema::Sistema(bool esAdmin) : esAdmin(esAdmin) {
     libros = Sistema::cargarLibros();
     clientes = Sistema::cargarClientes();
     autores = Sistema::cargarAutores();
-    personas = Sistema::cargarPersonas();
     categorias = Sistema::cargarCategorias();
     std::cout << "Listo." << std::endl;
 }

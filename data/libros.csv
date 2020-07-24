@@ -1,2 +1,5 @@
 codigo,nombre,codigoAutor,fechaPublicacion,codigoCategoria
 1,Calculo en Varias Variables,1,10/06/10,1
+2,The C Programming Language,2,10/10/90,2
+3,The modern approaches in parallel programming,3,10/10/90,2
+4,Computer Systems: A Programmer's Perspective,4,10/10/95,2
