@@ -5,7 +5,6 @@
 #include "sistema.h"
 #include "./Excepciones/excepcionAutorNoEncontrado.h"
 #include "./Excepciones/excepcionCategoriaNoEncontrada.h"
-#include <algorithm>
 
 Sistema::Sistema(bool esAdmin) : esAdmin(esAdmin) {
     std::cout << "Recuperando datos..." << std::endl;
@@ -65,7 +64,9 @@ void Sistema::run() {
         }
 
         switch (opcion) {
-            case 0: { break; }
+            case 0: {
+                break;
+            }
             case 1: {
                 verLibros();
                 break;
@@ -243,14 +244,24 @@ void Sistema::almacenarLibros() {
 
 void Sistema::almacenarClientes() {
     std::ofstream escribir("./data/clientes.csv");
-    for(Cliente c : clientes)
+    if (!escribir.is_open()) {
+        std::cerr << "Error al escribir los datos al archivo clientes.csv." << std::endl;
+    }
+
+    escribir << "nombres,apellidos,dni,telefono,direccion" << std::endl;
+    for (Cliente c : clientes)
         escribir << c.toCSV() << std::endl;
     escribir.close();
 }
 
 void Sistema::almacenarAutores() {
     std::ofstream escribir("./data/autores.csv");
-    for(Autor a : autores)
+    if (!escribir.is_open()) {
+        std::cerr << "Error al escribir los datos al archivo autores.csv." << std::endl;
+    }
+
+    escribir << "id,nombres,apellidos,dni,telefono,direccion" << std::endl;
+    for (Autor a : autores)
         escribir << a.toCSV() << std::endl;
     escribir.close();
 }
@@ -265,16 +276,16 @@ void Sistema::almacenarCategorias() {
 
 void Sistema::verLibros() {
     //PEPE
- //   std::int codigo;
-    for(const auto &l: libros){
+    //   std::int codigo;
+    for (const auto &l: libros) {
         std::cout << std::endl
-                  << "------------------------------------------------------------------"<<std::endl
+                  << "------------------------------------------------------------------" << std::endl
                   << "Codigo de libro     : " << l.getCodigo() << std::endl
                   << "Nombre del libro    : " << l.getNombre() << std::endl
                   << "Codigo del autor    : " << l.getCodigoAutor() << std::endl
                   << "Fecha de publicacion: " << l.getFechaPublicacion() << std::endl
                   << "Codigo de categoria : " << l.getCodigoCategoria() << std::endl
-                  << "------------------------------------------------------------------"<<std::endl;
+                  << "------------------------------------------------------------------" << std::endl;
 
     }
 
@@ -324,7 +335,7 @@ void Sistema::buscarLibroPorAutor() {
                           << "Codigo de categoria : " << l.getCodigoCategoria() << std::endl
                           << std::endl;
             }
-        } catch (ExcepcionAutorNoEncontrado&) {
+        } catch (ExcepcionAutorNoEncontrado &) {
             std::cerr << "Advertencia: Se intento recuperar un autor con id " << l.getCodigoAutor()
                       << ", pero no se encontro." << std::endl;
         }
@@ -356,7 +367,7 @@ void Sistema::buscarlibroPorCategoria() {
                           << "Categoria           : " << c.getNombre() << std::endl
                           << std::endl;
             }
-        } catch (ExcepcionCategoriaNoEncontrada&) {
+        } catch (ExcepcionCategoriaNoEncontrada &) {
             std::cerr << "Advertencia: Se intento recuperar una categoria con id " << l.getCodigoAutor()
                       << ", pero no se encontro." << std::endl;
         }
@@ -502,6 +513,6 @@ Categoria Sistema::obtenerCategoriaConId(int id) {
         if (c.getId() == id) return c;
     }
 
-    throw  ExcepcionCategoriaNoEncontrada("No se pudo obtener una categoria con id. En obtenerCategoriaConId");
+    throw ExcepcionCategoriaNoEncontrada("No se pudo obtener una categoria con id. En obtenerCategoriaConId");
 }
 
