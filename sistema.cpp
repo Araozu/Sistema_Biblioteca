@@ -85,6 +85,10 @@ void Sistema::run() {
                 eliminarCliente();
                 break;
             }
+            case 13: {
+                eliminarAutor();
+                break;
+            }
             default: {
                 std::cerr << "Opcion incorrecta." << std::endl;
             }
@@ -410,7 +414,27 @@ void Sistema::eliminarCliente() {
 }
 
 void Sistema::eliminarAutor() {
+    std::string idS;
+    std::cout << "Ingresa el id del autor:" << std::endl;
+    std::getline(std::cin, idS);
+    int id = std::stoi(idS);
 
+    bool clienteEliminado = false;
+    for (auto it = autores.begin(); it != autores.end(); ++it) {
+        if (it->getId() == id) {
+            std::cout << "Autor eliminado." << std::endl;
+            clienteEliminado = true;
+            autores.erase(it);
+            break;
+        }
+    }
+
+    if (!clienteEliminado) {
+        std::cout << "No se encontro un autor con id '" << id << "'." << std::endl;
+    }
+
+    std::cout << "Presiona enter para continuar.";
+    std::cin.ignore();
 }
 
 void Sistema::eliminarLibro() {
