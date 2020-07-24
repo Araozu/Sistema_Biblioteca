@@ -346,11 +346,13 @@ void Sistema::buscarLibroPorNombre() {
         if (l.getNombre().find(nombre) != std::string::npos) {
             libroEncontrado = true;
             std::cout << std::endl
+                      << "------------------------------------------------------------------" << std::endl
                       << "Codigo de libro     : " << l.getCodigo() << std::endl
                       << "Nombre del libro    : " << l.getNombre() << std::endl
                       << "Codigo del autor    : " << l.getCodigoAutor() << std::endl
                       << "Fecha de publicacion: " << l.getFechaPublicacion() << std::endl
-                      << "Codigo de categoria : " << l.getCodigoCategoria() << std::endl;
+                      << "Codigo de categoria : " << l.getCodigoCategoria() << std::endl
+                      << "------------------------------------------------------------------" << std::endl;
         }
     }
 
@@ -374,12 +376,13 @@ void Sistema::buscarLibroPorAutor() {
             Autor a = obtenerAutorConId(l.getCodigoAutor());
             if (a.getNombres().find(nombre) != std::string::npos) {
                 libroEncontrado = true;
-                std::cout << "Codigo de libro     : " << l.getCodigo() << std::endl
+                std::cout << "------------------------------------------------------------------" << std::endl
+                          << "Codigo de libro     : " << l.getCodigo() << std::endl
                           << "Nombre del libro    : " << l.getNombre() << std::endl
                           << "Autor               : " << a.getNombres() << std::endl
                           << "Fecha de publicacion: " << l.getFechaPublicacion() << std::endl
                           << "Codigo de categoria : " << l.getCodigoCategoria() << std::endl
-                          << std::endl;
+                          << "------------------------------------------------------------------" << std::endl;
             }
         } catch (ExcepcionAutorNoEncontrado &) {
             std::cerr << "Advertencia: Se intento recuperar un autor con id " << l.getCodigoAutor()
@@ -407,12 +410,13 @@ void Sistema::buscarlibroPorCategoria() {
             Categoria c = obtenerCategoriaConId(l.getCodigoCategoria());
             if (c.getNombre().find(nombre) != std::string::npos) {
                 libroEncontrado = true;
-                std::cout << "Codigo de libro     : " << l.getCodigo() << std::endl
+                std::cout << "------------------------------------------------------------------" << std::endl
+                          << "Codigo de libro     : " << l.getCodigo() << std::endl
                           << "Nombre del libro    : " << l.getNombre() << std::endl
                           << "Codigo del autor    : " << l.getCodigoAutor() << std::endl
                           << "Fecha de publicacion: " << l.getFechaPublicacion() << std::endl
                           << "Categoria           : " << c.getNombre() << std::endl
-                          << std::endl;
+                          << "------------------------------------------------------------------" << std::endl;
             }
         } catch (ExcepcionCategoriaNoEncontrada &) {
             std::cerr << "Advertencia: Se intento recuperar una categoria con id " << l.getCodigoAutor()
