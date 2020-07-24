@@ -10,7 +10,7 @@
 class Autor: public Persona {
 public:
     int id;
-    Autor(int id, std::string nombres, std::string apellidos, int dni, int telefono, std::string direccion);
+    Autor(int id, std::string nombres, std::string apellidos);
     std::string toCSV() override;
     static Autor fromCSV(const std::string &csv);
 

@@ -11,12 +11,9 @@ class Persona {
 protected:
     std::string nombres;
     std::string apellidos;
-    int dni;
-    int telefono;
-    std::string direccion;
 
 public:
-    Persona(std::string _nombres, std::string _apellidos, int _dni, int _telefono, std::string _direccion);
+    Persona(std::string nombres, std::string apellidos);
 
     std::string getNombres() const;
 
@@ -25,18 +22,6 @@ public:
     std::string getApellidos() const;
 
     void setApellidos(std::string apellidos);
-
-    int getDni() const;
-
-    void setDni(int dni);
-
-    int getTelefono() const;
-
-    void setTelefono(int telefono);
-
-    std::string getDireccion() const;
-
-    void setDireccion(std::string direccion);
 
     static Persona crearPersonaPorConsola();
 

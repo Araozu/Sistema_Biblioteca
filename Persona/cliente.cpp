@@ -7,7 +7,8 @@
 #include "../Excepciones/excepcionCsvIncorrecto.h"
 
 Cliente::Cliente(const std::string &nombres, const std::string &apellidos, int dni, int telefono,
-                 const std::string &direccion) : Persona(nombres, apellidos, dni, telefono, direccion) {}
+                 const std::string &direccion) : Persona(nombres, apellidos),
+                 direccion(direccion), dni(dni), telefono(telefono) {}
 
 std::string Cliente::toCSV() {
     std::stringstream sstream;
@@ -57,4 +58,28 @@ Cliente Cliente::fromCSV(const std::string &csv) {
           << csv;
         throw ExcepcionCSVIncorrecto(s.str());
     }
+}
+
+const std::string &Cliente::getDireccion() const {
+    return direccion;
+}
+
+void Cliente::setDireccion(const std::string &direccion) {
+    Cliente::direccion = direccion;
+}
+
+int Cliente::getDni() const {
+    return dni;
+}
+
+void Cliente::setDni(int dni) {
+    Cliente::dni = dni;
+}
+
+int Cliente::getTelefono() const {
+    return telefono;
+}
+
+void Cliente::setTelefono(int telefono) {
+    Cliente::telefono = telefono;
 }
