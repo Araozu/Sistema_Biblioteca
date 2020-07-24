@@ -237,11 +237,17 @@ void Sistema::almacenarLibros() {
 }
 
 void Sistema::almacenarClientes() {
-
+    std::ofstream escribir("./data/clientes.csv");
+    for(Cliente c : clientes)
+        escribir << c.toCSV() << std::endl;
+    escribir.close();
 }
 
 void Sistema::almacenarAutores() {
-
+    std::ofstream escribir("./data/autores.csv");
+    for(Autor a : autores)
+        escribir << a.toCSV() << std::endl;
+    escribir.close();
 }
 
 void Sistema::almacenarPersonas() {
