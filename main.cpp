@@ -17,6 +17,12 @@ int main(int argc, char** argv) {
     }
 
     Sistema s(esAdmin);
-    s.run();
+    try {
+        s.run();
+    } catch (std::exception &e) {
+        std::cerr << "Se encontro un error sin tratar. Se guardaran los cambios y se saldra." << std::endl;
+        std::cerr << e.what();
+    }
+
     return 0;
 }
