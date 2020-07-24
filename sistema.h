@@ -67,6 +67,7 @@ public:
     void almacenarPersonas();
     void almacenarCategorias();
 
+    static void limpiarConsola();
 };
 
 
