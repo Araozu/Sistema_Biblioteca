@@ -5,6 +5,7 @@
 #include "sistema.h"
 #include "./Excepciones/excepcionAutorNoEncontrado.h"
 #include "./Excepciones/excepcionCategoriaNoEncontrada.h"
+#include <algorithm>
 
 Sistema::Sistema(bool esAdmin) : esAdmin(esAdmin) {
     std::cout << "Recuperando datos..." << std::endl;
@@ -65,6 +66,10 @@ void Sistema::run() {
 
         switch (opcion) {
             case 0: { break; }
+            case 1: {
+                verLibros();
+                break;
+            }
             case 2: {
                 buscarLibroPorNombre();
                 break;
@@ -259,6 +264,19 @@ void Sistema::almacenarCategorias() {
 }
 
 void Sistema::verLibros() {
+    //PEPE
+ //   std::int codigo;
+    for(const auto &l: libros){
+        std::cout << std::endl
+                  << "------------------------------------------------------------------"<<std::endl
+                  << "Codigo de libro     : " << l.getCodigo() << std::endl
+                  << "Nombre del libro    : " << l.getNombre() << std::endl
+                  << "Codigo del autor    : " << l.getCodigoAutor() << std::endl
+                  << "Fecha de publicacion: " << l.getFechaPublicacion() << std::endl
+                  << "Codigo de categoria : " << l.getCodigoCategoria() << std::endl
+                  << "------------------------------------------------------------------"<<std::endl;
+
+    }
 
 }
 

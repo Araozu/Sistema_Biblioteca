@@ -48,6 +48,7 @@ public:
     void eliminarAutor();
     void eliminarLibro();
 
+
     static std::vector<Prestamo> cargarPrestamos();
     static std::vector<Libro> cargarLibros();
     static std::vector<Cliente> cargarClientes();
