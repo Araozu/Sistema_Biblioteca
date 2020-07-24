@@ -33,6 +33,7 @@ void Sistema::run() {
     int opcion;
     do {
 
+        // Sistema::limpiarConsola();
         std::cout << std::endl << "Menu Principal" << std::endl << std::endl
                   << "1: Ver libros" << std::endl
                   << "2: Buscar un libro por nombre" << std::endl
@@ -331,6 +332,8 @@ void Sistema::verLibros() {
 
     }
 
+    std::cout << "Presiona enter para continuar.";
+    std::cin.ignore();
 }
 
 void Sistema::buscarLibroPorNombre() {
