@@ -333,6 +333,7 @@ void Sistema::verLibros() {
 
     std::cout << "Presiona enter para continuar.";
     std::cin.ignore();
+    std::cout << std::endl;
 }
 
 void Sistema::buscarLibroPorNombre() {
@@ -359,6 +360,7 @@ void Sistema::buscarLibroPorNombre() {
 
     std::cout << "Presiona enter para continuar.";
     std::cin.ignore();
+    std::cout << std::endl;
 }
 
 void Sistema::buscarLibroPorAutor() {
@@ -391,6 +393,7 @@ void Sistema::buscarLibroPorAutor() {
 
     std::cout << "Presiona enter para continuar.";
     std::cin.ignore();
+    std::cout << std::endl;
 }
 
 void Sistema::buscarlibroPorCategoria() {
@@ -423,6 +426,7 @@ void Sistema::buscarlibroPorCategoria() {
 
     std::cout << "Presiona enter para continuar.";
     std::cin.ignore();
+    std::cout << std::endl;
 }
 
 void Sistema::verAutores() {
@@ -450,6 +454,7 @@ void Sistema::buscarAutor() {
 
     std::cout << "Presiona enter para continuar.";
     std::cin.ignore();
+    std::cout << std::endl;
 }
 
 void Sistema::registrarPrestamo() {
@@ -494,6 +499,7 @@ void Sistema::eliminarCliente() {
 
     std::cout << "Presiona enter para continuar.";
     std::cin.ignore();
+    std::cout << std::endl;
 }
 
 void Sistema::eliminarAutor() {
@@ -518,6 +524,7 @@ void Sistema::eliminarAutor() {
 
     std::cout << "Presiona enter para continuar.";
     std::cin.ignore();
+    std::cout << std::endl;
 }
 
 void Sistema::eliminarLibro() {
@@ -542,6 +549,7 @@ void Sistema::eliminarLibro() {
 
     std::cout << "Presiona enter para continuar.";
     std::cin.ignore();
+    std::cout << std::endl;
 }
 
 Autor Sistema::obtenerAutorConId(int id) {
