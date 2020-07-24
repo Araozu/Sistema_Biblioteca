@@ -52,11 +52,12 @@ std::string Prestamo::toCSV() {
     std::string csv;
     std::stringstream gstream;
 
-    gstream << getCodigoLibro() << ",";
-    gstream << getDniCliente() << ",";
-    gstream << fechaPrestamo << ",";
-    gstream << fechaDevolucion << ",";
-    gstream << isDevuelto();
+    gstream << getCodigoPrestamo() << ","
+            << getCodigoLibro() << ","
+            << getDniCliente() << ","
+            << fechaPrestamo << ","
+            << fechaDevolucion << ","
+            << isDevuelto();
 
     csv = gstream.str();
     return csv;
