@@ -25,7 +25,7 @@ Sistema::~Sistema() {
     almacenarLibros();
     almacenarPersonas();
     almacenarPrestamos();
-    std::cout << "Listo." << std::endl;
+    std::cout << "Programa terminado." << std::endl;
 }
 
 void Sistema::run() {
@@ -87,6 +87,10 @@ void Sistema::run() {
             }
             case 13: {
                 eliminarAutor();
+                break;
+            }
+            case 14: {
+                eliminarLibro();
                 break;
             }
             default: {
@@ -419,17 +423,17 @@ void Sistema::eliminarAutor() {
     std::getline(std::cin, idS);
     int id = std::stoi(idS);
 
-    bool clienteEliminado = false;
+    bool autorEliminado = false;
     for (auto it = autores.begin(); it != autores.end(); ++it) {
         if (it->getId() == id) {
             std::cout << "Autor eliminado." << std::endl;
-            clienteEliminado = true;
+            autorEliminado = true;
             autores.erase(it);
             break;
         }
     }
 
-    if (!clienteEliminado) {
+    if (!autorEliminado) {
         std::cout << "No se encontro un autor con id '" << id << "'." << std::endl;
     }
 
@@ -438,7 +442,27 @@ void Sistema::eliminarAutor() {
 }
 
 void Sistema::eliminarLibro() {
+    std::string idS;
+    std::cout << "Ingresa el id del libro:" << std::endl;
+    std::getline(std::cin, idS);
+    int id = std::stoi(idS);
 
+    bool libroEliminado = false;
+    for (auto it = libros.begin(); it != libros.end(); ++it) {
+        if (it->getCodigo() == id) {
+            std::cout << "Libro eliminado." << std::endl;
+            libroEliminado = true;
+            libros.erase(it);
+            break;
+        }
+    }
+
+    if (!libroEliminado) {
+        std::cout << "No se encontro un libro con id '" << id << "'." << std::endl;
+    }
+
+    std::cout << "Presiona enter para continuar.";
+    std::cin.ignore();
 }
 
 Autor Sistema::obtenerAutorConId(int id) {
