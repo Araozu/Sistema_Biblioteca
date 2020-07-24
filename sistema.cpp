@@ -72,6 +72,10 @@ void Sistema::run() {
                 buscarlibroPorCategoria();
                 break;
             }
+            case 6: {
+                buscarAutor();
+                break;
+            }
             default: {
                 std::cerr << "Opcion incorrecta." << std::endl;
             }
@@ -330,7 +334,26 @@ void Sistema::verAutores() {
 }
 
 void Sistema::buscarAutor() {
+    std::string nombre;
+    std::cout << "Ingresa el nombre del autor:";
+    std::getline(std::cin, nombre);
 
+    bool autorEncontrado = false;
+    for (const auto &a: autores) {
+        if (a.getNombres().find(nombre) != std::string::npos) {
+            autorEncontrado = true;
+            std::cout << "Nombres del autor   : " << a.getNombres() << std::endl
+                      << "Appellidos del autor: " << a.getApellidos() << std::endl
+                      << std::endl;
+        }
+    }
+
+    if (!autorEncontrado) {
+        std::cout << "No se encontro un autor con nombre '" << nombre << "'." << std::endl;
+    }
+
+    std::cout << "Presiona enter para continuar.";
+    std::cin.ignore();
 }
 
 void Sistema::registrarPrestamo() {
