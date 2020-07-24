@@ -235,11 +235,31 @@ int Sistema::sigCodigoCategoria() {
 }
 
 void Sistema::almacenarPrestamos() {
+    std::ofstream escribir("./data/prestamos.csv");
+    if (!escribir.is_open()) {
+        std::cerr << "Error al escribir los datos al archivo prestamos.csv." << std::endl;
+    }
 
+    escribir << "codigoPrestamo,codigoLibro,dniCliente,fechaPrestamo,fechaDevolucion,devuelto" << std::endl;
+    for (Prestamo p: prestamos) {
+        escribir << p.toCSV() << std::endl;
+    }
+
+    escribir.close();
 }
 
 void Sistema::almacenarLibros() {
+    std::ofstream escribir("./data/libros.csv");
+    if (!escribir.is_open()) {
+        std::cerr << "Error al escribir los datos al archivo libros.csv." << std::endl;
+    }
 
+    escribir << "codigo,nombre,codigoAutor,fechaPublicacion,codigoCategoria" << std::endl;
+    for (Libro l: libros) {
+        escribir << l.toCSV() << std::endl;
+    }
+
+    escribir.close();
 }
 
 void Sistema::almacenarClientes() {
@@ -249,8 +269,10 @@ void Sistema::almacenarClientes() {
     }
 
     escribir << "nombres,apellidos,dni,telefono,direccion" << std::endl;
-    for (Cliente c : clientes)
+    for (Cliente c : clientes) {
         escribir << c.toCSV() << std::endl;
+    }
+
     escribir.close();
 }
 
@@ -261,17 +283,37 @@ void Sistema::almacenarAutores() {
     }
 
     escribir << "id,nombres,apellidos,dni,telefono,direccion" << std::endl;
-    for (Autor a : autores)
+    for (Autor a : autores) {
         escribir << a.toCSV() << std::endl;
+    }
+
     escribir.close();
 }
 
 void Sistema::almacenarPersonas() {
+    std::ofstream escribir("./data/personas.csv");
+    if (!escribir.is_open()) {
+        std::cerr << "Error al escribir los datos al archivo personas.csv." << std::endl;
+    }
 
+    escribir << "nombres,apellidos,dni,telefono,direccion" << std::endl;
+    for (Persona p: personas)
+        escribir << p.toCSV() << std::endl;
+    escribir.close();
 }
 
 void Sistema::almacenarCategorias() {
+    std::ofstream escribir("./data/categorias.csv");
+    if (!escribir.is_open()) {
+        std::cerr << "Error al escribir los datos al archivo categorias.csv." << std::endl;
+    }
 
+    escribir << "nombre,id" << std::endl;
+    for (Categoria c: categorias) {
+        escribir << c.toCSV() << std::endl;
+    }
+
+    escribir.close();
 }
 
 void Sistema::verLibros() {
