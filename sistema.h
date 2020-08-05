@@ -27,7 +27,7 @@ protected:
     Categoria obtenerCategoriaConId(int id);
 
 public:
-    Sistema(bool esAdmin);
+    explicit Sistema(bool esAdmin);
 
     ~Sistema();
 

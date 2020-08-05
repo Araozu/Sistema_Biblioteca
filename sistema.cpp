@@ -22,7 +22,7 @@ Sistema::~Sistema() {
     almacenarCategorias();
     almacenarClientes();
     almacenarLibros();
-    almacenarPersonas();
+    // almacenarPersonas();
     almacenarPrestamos();
     std::cout << "Programa terminado." << std::endl;
 }
@@ -81,6 +81,10 @@ void Sistema::run() {
             }
             case 4: {
                 buscarlibroPorCategoria();
+                break;
+            }
+            case 5: {
+                verAutores();
                 break;
             }
             case 6: {
@@ -435,6 +439,17 @@ void Sistema::buscarlibroPorCategoria() {
 
 void Sistema::verAutores() {
 
+    for (const auto &a: autores) {
+        std::cout << std::endl
+                  << "------------------------------------------------------------------" << std::endl
+                  << "Nombres del autor   : " << a.getNombres() << std::endl
+                  << "Appellidos del autor: " << a.getApellidos() << std::endl
+                  << "------------------------------------------------------------------" << std::endl;
+    }
+
+    std::cout << "Presiona enter para continuar.";
+    std::cin.ignore();
+    std::cout << std::endl;
 }
 
 void Sistema::buscarAutor() {
