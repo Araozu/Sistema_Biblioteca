@@ -54,7 +54,7 @@ void Libro::setCodigoCategoria(int codigoCategoria) {
     Libro::codigoCategoria = codigoCategoria;
 }
 
-Libro Libro::crearLibroPorConsola() {
+Libro Libro::crearLibroPorConsola(int codLibro) {
     std::cout << "Creando un Libro." << std::endl;
 
     std::string nombreLibro;
@@ -77,11 +77,39 @@ Libro Libro::crearLibroPorConsola() {
         std::cout << "Por favor, ingresa una fecha.";
     } while (true);
 
-    // TODO: En lugar de usar 0 como codigo de autor, habra un metodo
-    //       Sistema::buscarAutor el cual busca el autor por consola, y
-    //       devuelve su codigo para poder usarse aqui.
-    //       Tambien para libro
-    Libro l(0, nombreLibro, 0, fechaPublicacion, 0);
+    std::string codAutorRaw;
+    int codAutor = -1;
+    do {
+        std::cout << "Ingresa el codigo del autor:" << std::endl;
+        std::getline(std::cin, codAutorRaw);
+        try {
+
+            codAutor = std::stoi(codAutorRaw);
+            break;
+
+        } catch (...) {
+            std::cout << "Por favor, ingresa un numero.";
+        }
+
+    } while (true);
+
+    std::string codCatRaw;
+    int codCat = -1;
+    do {
+        std::cout << "Ingresa el codigo de la caregoria:" << std::endl;
+        std::getline(std::cin, codAutorRaw);
+        try {
+
+            codAutor = std::stoi(codAutorRaw);
+            break;
+
+        } catch (...) {
+            std::cout << "Por favor, ingresa un numero.";
+        }
+
+    } while (true);
+
+    Libro l(codLibro, nombreLibro, codAutor, fechaPublicacion, codCat);
     return l;
 }
 

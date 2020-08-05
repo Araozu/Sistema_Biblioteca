@@ -40,7 +40,7 @@ public:
 
     void setCodigoCategoria(int codigoCategoria);
 
-    static Libro crearLibroPorConsola();
+    static Libro crearLibroPorConsola(int codLib);
 
     std::string toCSV();
 

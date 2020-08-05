@@ -91,6 +91,10 @@ void Sistema::run() {
                 buscarAutor();
                 break;
             }
+            case 11: {
+                registrarLibro();
+                break;
+            }
             case 12: {
                 eliminarCliente();
                 break;
@@ -493,7 +497,12 @@ void Sistema::registrarAutor() {
 }
 
 void Sistema::registrarLibro() {
-
+    Libro l = Libro::crearLibroPorConsola(sigCodigoLibro());
+    libros.push_back(l);
+    std::cout << "Libro creado con exito." << std::endl
+              << "Presiona enter para continuar.";
+    std::cin.ignore();
+    std::cout << std::endl;
 }
 
 void Sistema::eliminarCliente() {

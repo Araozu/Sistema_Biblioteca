@@ -22,6 +22,9 @@ int main(int argc, char** argv) {
     } catch (std::exception &e) {
         std::cerr << "Se encontro un error sin tratar. Se guardaran los cambios y se saldra." << std::endl;
         std::cerr << e.what();
+        std::cout << "Presiona enter para continuar.";
+        std::cin.ignore();
+        std::cout << std::endl;
     }
 
     return 0;
