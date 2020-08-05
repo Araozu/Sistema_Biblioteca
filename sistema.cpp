@@ -95,6 +95,10 @@ void Sistema::run() {
                 registrarPrestamo();
                 break;
             }
+            case 8: {
+                registrarDevolucion();
+                break;
+            }
             case 9: {
                 registrarCliente();
                 break;
@@ -551,7 +555,67 @@ void Sistema::registrarPrestamo() {
 }
 
 void Sistema::registrarDevolucion() {
+    std::string dniRaw;
+    int dni;
+    do {
+        std::cout << "Ingresa el dni del cliente:" << std::endl;
+        std::getline(std::cin, dniRaw);
+        try {
+            dni = std::stoi(dniRaw);
+            break;
+        } catch (...) {
+            std::cout << "Por favor, ingresa un numero.";
+        }
 
+    } while (true);
+
+    bool hayPrestamos = false;
+    for (const auto& p: prestamos) {
+        if (p.getDniCliente() == dni) {
+            hayPrestamos = true;
+            std::cout << std::endl
+                      << "------------------------------------------------------------------" << std::endl
+                      << "Codigo de prestamo     : " << p.getCodigoPrestamo() << std::endl
+                      << "DNI del cliente        : " << p.getDniCliente() << std::endl
+                      << "Fecha de prestamo      : " << p.getFechaPrestamo() << std::endl
+                      << "Fecha de devolucion    : " << p.getFechaDevolucion() << std::endl
+                      << "------------------------------------------------------------------" << std::endl;
+        }
+    }
+
+    if (!hayPrestamos) {
+        std::cout << "No hay ningun prestamo asociado al dni " << dni << "." << std::endl;
+        std::cout << "Presiona enter para continuar.";
+        std::cin.ignore();
+        std::cout << std::endl;
+        return;
+    }
+
+    std::string codPrestamoRaw;
+    int codPrestamo;
+    do {
+        std::cout << "Ingresa el codigo del prestamo a devolver:" << std::endl;
+        std::getline(std::cin, codPrestamoRaw);
+        try {
+            codPrestamo = std::stoi(codPrestamoRaw);
+            break;
+        } catch (...) {
+            std::cout << "Por favor, ingresa un numero.";
+        }
+
+    } while (true);
+
+    for (auto it = prestamos.begin(); it != prestamos.end(); ++it) {
+        if (it->getCodigoPrestamo() == codPrestamo) {
+            std::cout << "Prestamo terminado." << std::endl;
+            prestamos.erase(it);
+            break;
+        }
+    }
+
+    std::cout << "Presiona enter para continuar.";
+    std::cin.ignore();
+    std::cout << std::endl;
 }
 
 void Sistema::registrarCliente() {
