@@ -91,6 +91,10 @@ void Sistema::run() {
                 buscarAutor();
                 break;
             }
+            case 10: {
+                registrarAutor();
+                break;
+            }
             case 11: {
                 registrarLibro();
                 break;
@@ -213,6 +217,15 @@ std::vector<Categoria> Sistema::cargarCategorias() {
         categorias.push_back(c);
     }
     return categorias;
+}
+
+int Sistema::sigCodigoAutor() {
+    int sigCod = -1;
+    for (const auto &a: autores) {
+        int codigoAutor = a.getId();
+        if (codigoAutor > sigCod) sigCod = codigoAutor;
+    }
+    return sigCod + 1;
 }
 
 int Sistema::sigCodigoPrestamo() {
@@ -493,7 +506,12 @@ void Sistema::registrarUsuario() {
 }
 
 void Sistema::registrarAutor() {
-
+    Autor a = Autor::crearAutorPorConsola(sigCodigoAutor());
+    autores.push_back(a);
+    std::cout << "Autor creado con exito." << std::endl
+              << "Presiona enter para continuar.";
+    std::cin.ignore();
+    std::cout << std::endl;
 }
 
 void Sistema::registrarLibro() {

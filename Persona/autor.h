@@ -13,6 +13,7 @@ public:
     Autor(int id, std::string nombres, std::string apellidos);
     std::string toCSV() override;
     static Autor fromCSV(const std::string &csv);
+    static Autor crearAutorPorConsola(int idAutor);
 
     int getId() const;
 };

@@ -59,3 +59,30 @@ Autor Autor::fromCSV(const std::string &csv) {
 int Autor::getId() const {
     return id;
 }
+
+Autor Autor::crearAutorPorConsola(int idAutor) {
+    std::cout << "Creando un Autor." << std::endl;
+
+    std::string nombreAutor;
+    do {
+        std::cout << "Ingresa el nombre del autor:" << std::endl;
+        std::getline(std::cin, nombreAutor);
+
+        if (!nombreAutor.empty()) break;
+
+        std::cout << "Por favor, ingresa un nombre.";
+    } while (true);
+
+    std::string apellidoAutor;
+    do {
+        std::cout << "Ingresa el nombre del autor:" << std::endl;
+        std::getline(std::cin, apellidoAutor);
+
+        if (!apellidoAutor.empty()) break;
+
+        std::cout << "Por favor, ingresa un apellido.";
+    } while (true);
+
+    Autor a(idAutor, nombreAutor, apellidoAutor);
+    return a;
+}

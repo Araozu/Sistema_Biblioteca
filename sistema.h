@@ -56,6 +56,7 @@ public:
     static std::vector<Persona> cargarPersonas();
     static std::vector<Categoria> cargarCategorias();
 
+    int sigCodigoAutor();
     int sigCodigoPrestamo();
     int sigCodigoLibro();
     int sigCodigoCategoria();
