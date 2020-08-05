@@ -91,6 +91,10 @@ void Sistema::run() {
                 buscarAutor();
                 break;
             }
+            case 9: {
+                registrarCliente();
+                break;
+            }
             case 10: {
                 registrarAutor();
                 break;
@@ -501,8 +505,13 @@ void Sistema::registrarDevolucion() {
 
 }
 
-void Sistema::registrarUsuario() {
-
+void Sistema::registrarCliente() {
+    Cliente c = Cliente::crearClientePorConsola();
+    clientes.push_back(c);
+    std::cout << "Cliente creado con exito." << std::endl
+              << "Presiona enter para continuar.";
+    std::cin.ignore();
+    std::cout << std::endl;
 }
 
 void Sistema::registrarAutor() {

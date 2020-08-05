@@ -78,7 +78,7 @@ Libro Libro::crearLibroPorConsola(int codLibro) {
     } while (true);
 
     std::string codAutorRaw;
-    int codAutor = -1;
+    int codAutor;
     do {
         std::cout << "Ingresa el codigo del autor:" << std::endl;
         std::getline(std::cin, codAutorRaw);
@@ -94,13 +94,13 @@ Libro Libro::crearLibroPorConsola(int codLibro) {
     } while (true);
 
     std::string codCatRaw;
-    int codCat = -1;
+    int codCat;
     do {
-        std::cout << "Ingresa el codigo de la caregoria:" << std::endl;
-        std::getline(std::cin, codAutorRaw);
+        std::cout << "Ingresa el codigo de la categoria:" << std::endl;
+        std::getline(std::cin, codCatRaw);
         try {
 
-            codAutor = std::stoi(codAutorRaw);
+            codCat = std::stoi(codCatRaw);
             break;
 
         } catch (...) {

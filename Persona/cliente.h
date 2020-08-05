@@ -28,6 +28,7 @@ public:
             const std::string &direccion);
     std::string toCSV() override;
     static Cliente fromCSV(const std::string &csv);
+    static Cliente crearClientePorConsola();
 };
 
 

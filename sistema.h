@@ -41,7 +41,7 @@ public:
     void buscarAutor();
     void registrarPrestamo();
     void registrarDevolucion();
-    void registrarUsuario();
+    void registrarCliente();
     void registrarAutor();
     void registrarLibro();
     void eliminarCliente();
