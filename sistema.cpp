@@ -91,6 +91,10 @@ void Sistema::run() {
                 buscarAutor();
                 break;
             }
+            case 7: {
+                registrarPrestamo();
+                break;
+            }
             case 9: {
                 registrarCliente();
                 break;
@@ -498,7 +502,52 @@ void Sistema::buscarAutor() {
 }
 
 void Sistema::registrarPrestamo() {
+    int codigoPrestamo = sigCodigoPrestamo();
 
+    std::string codLibroRaw;
+    int codLibro;
+    do {
+        std::cout << "Ingresa el codigo del libro:" << std::endl;
+        std::getline(std::cin, codLibroRaw);
+        try {
+
+            codLibro = std::stoi(codLibroRaw);
+            break;
+
+        } catch (...) {
+            std::cout << "Por favor, ingresa un numero.";
+        }
+
+    } while (true);
+
+    std::string dniRaw;
+    int dni;
+    do {
+        std::cout << "Ingresa el dni del cliente:" << std::endl;
+        std::getline(std::cin, dniRaw);
+        try {
+
+            dni = std::stoi(dniRaw);
+            break;
+
+        } catch (...) {
+            std::cout << "Por favor, ingresa un numero.";
+        }
+
+    } while (true);
+
+    std::string fechaPrestamo;
+    do {
+        std::cout << "Ingresa la fecha de prestamo:" << std::endl;
+        std::getline(std::cin, fechaPrestamo);
+
+        if (!fechaPrestamo.empty()) break;
+
+        std::cout << "Por favor, ingresa una fecha.";
+    } while (true);
+
+    Prestamo p(codigoPrestamo, codLibro, dni, fechaPrestamo, "-", false);
+    prestamos.push_back(p);
 }
 
 void Sistema::registrarDevolucion() {
