@@ -5,7 +5,10 @@
 #include "sistema.h"
 #include "./Excepciones/excepcionAutorNoEncontrado.h"
 #include "./Excepciones/excepcionCategoriaNoEncontrada.h"
-
+/**
+ * Se verificara para iniciar el Sistema si es Administrador
+ * @param esAdmin valor booleano que verificara si es Administrador , caso sea asi se cargaran todos los datos de la Biblioteca
+ */
 Sistema::Sistema(bool esAdmin) : esAdmin(esAdmin) {
     std::cout << "Recuperando datos..." << std::endl;
     prestamos = Sistema::cargarPrestamos();
@@ -26,7 +29,9 @@ Sistema::~Sistema() {
     almacenarPrestamos();
     std::cout << "Programa terminado." << std::endl;
 }
-
+/**
+ * Una vez se ingrese con el administrador se podra iniciar el menu Principal de nuestra Aplicacion lo cual mostrara por consola las diferentes opciones con las que cuenta nuestra Aplicacion
+ */
 void Sistema::run() {
     std::string opcionRaw;
     int opcion;
@@ -131,7 +136,10 @@ void Sistema::run() {
     } while (opcion != 0);
 
 }
-
+/**
+ * Se cargara los libros de lectora
+ * @return  se retornara los libros ingresados previamente
+ */
 std::vector<Libro> Sistema::cargarLibros() {
     std::ifstream lectora("./data/libros.csv");
     std::vector<Libro> libros;
@@ -149,6 +157,10 @@ std::vector<Libro> Sistema::cargarLibros() {
     return libros;
 }
 
+/**
+ * Se cargara los Prestamos hechos de lectora
+ * @return  se retornara los Prestamos ingresados previamente
+ */
 std::vector<Prestamo> Sistema::cargarPrestamos() {
     std::ifstream lectora("./data/prestamos.csv");
     std::vector<Prestamo> prestamos;
@@ -166,6 +178,10 @@ std::vector<Prestamo> Sistema::cargarPrestamos() {
     return prestamos;
 }
 
+/**
+ * Se cargara los clientes de lectora
+ * @return  se retornara los clientes ingresados previamente
+ */
 std::vector<Cliente> Sistema::cargarClientes() {
     std::ifstream lectora("./data/clientes.csv");
     std::vector<Cliente> clientes;
@@ -183,6 +199,10 @@ std::vector<Cliente> Sistema::cargarClientes() {
     return clientes;
 }
 
+/**
+ * Se cargara los autores de lectora
+ * @return  se retornara los autores ingresados previamente
+ */
 std::vector<Autor> Sistema::cargarAutores() {
     std::ifstream lectora("./data/autores.csv");
     std::vector<Autor> autores;
@@ -200,6 +220,10 @@ std::vector<Autor> Sistema::cargarAutores() {
     return autores;
 }
 
+/**
+ * Se cargara las Personas de lectora
+ * @return  se retornara las personas registradas en nuestro sistema
+ */
 std::vector<Persona> Sistema::cargarPersonas() {
     std::ifstream lectora("./data/personas.csv");
     std::vector<Persona> personas;
@@ -217,6 +241,10 @@ std::vector<Persona> Sistema::cargarPersonas() {
     return personas;
 }
 
+/**
+ * Se cargara las Categorias de lectora
+ * @return  se retornara las Categorias ingresados previamente
+ */
 std::vector<Categoria> Sistema::cargarCategorias() {
     std::ifstream lectura("./data/categorias.csv");
     std::vector<Categoria> categorias;
@@ -266,7 +294,9 @@ int Sistema::sigCodigoCategoria() {
     }
     return sigCod + 1;
 }
-
+/**
+ * Metodo para almacenar todos los Prestamos hechos en el archivo excel.csv designado
+ */
 void Sistema::almacenarPrestamos() {
     std::ofstream escribir("./data/prestamos.csv");
     if (!escribir.is_open()) {
@@ -281,6 +311,9 @@ void Sistema::almacenarPrestamos() {
     escribir.close();
 }
 
+/**
+ * Metodo para almacenar todos los libros hechos en el archivo excel.csv designado
+ */
 void Sistema::almacenarLibros() {
     std::ofstream escribir("./data/libros.csv");
     if (!escribir.is_open()) {
@@ -294,7 +327,9 @@ void Sistema::almacenarLibros() {
 
     escribir.close();
 }
-
+/**
+ * Metodo para almacenar todos los clientes en el archivo excel.csv designado
+ */
 void Sistema::almacenarClientes() {
     std::ofstream escribir("./data/clientes.csv");
     if (!escribir.is_open()) {
@@ -308,7 +343,9 @@ void Sistema::almacenarClientes() {
 
     escribir.close();
 }
-
+/**
+ * Metodo para almacenar todos los Autores en el archivo excel.csv designado
+ */
 void Sistema::almacenarAutores() {
     std::ofstream escribir("./data/autores.csv");
     if (!escribir.is_open()) {
@@ -322,7 +359,9 @@ void Sistema::almacenarAutores() {
 
     escribir.close();
 }
-
+/**
+ * Metodo para almacenar todos las Personas en el archivo excel.csv designado
+ */
 void Sistema::almacenarPersonas() {
     std::ofstream escribir("./data/personas.csv");
     if (!escribir.is_open()) {
@@ -334,7 +373,9 @@ void Sistema::almacenarPersonas() {
         escribir << p.toCSV() << std::endl;
     escribir.close();
 }
-
+/**
+ * Metodo para almacenar todas las categorias en el archivo excel.csv designado
+ */
 void Sistema::almacenarCategorias() {
     std::ofstream escribir("./data/categorias.csv");
     if (!escribir.is_open()) {
@@ -348,7 +389,9 @@ void Sistema::almacenarCategorias() {
 
     escribir.close();
 }
-
+/**
+ * Metodo para ver los libros ingresados con anteriodad de manera ordenada y en forma de lista separada por guiones
+ */
 void Sistema::verLibros() {
     //PEPE
     //   std::int codigo;
@@ -397,7 +440,9 @@ void Sistema::buscarLibroPorNombre() {
     std::cin.ignore();
     std::cout << std::endl;
 }
-
+/**
+ * Metodo para buscar un libro por el Nombre de Autor y mostrara todos los libros con el nombre de autor Registrado
+ */
 void Sistema::buscarLibroPorAutor() {
     std::string nombre;
     std::cout << "Ingresa el nombre del autor:";
@@ -431,7 +476,9 @@ void Sistema::buscarLibroPorAutor() {
     std::cin.ignore();
     std::cout << std::endl;
 }
-
+/**
+ * Metodo para buscar un libro por su Categoria y mostrara todos los libros con la Categoria señalada
+ */
 void Sistema::buscarlibroPorCategoria() {
     std::string nombre;
     std::cout << "Ingresa el nombre de la categoria:";
@@ -465,7 +512,9 @@ void Sistema::buscarlibroPorCategoria() {
     std::cin.ignore();
     std::cout << std::endl;
 }
-
+/**
+ * Metodo para mostrar todos los Autores registrados , separados por su nombre y apellido
+ */
 void Sistema::verAutores() {
 
     for (const auto &a: autores) {
@@ -480,7 +529,9 @@ void Sistema::verAutores() {
     std::cin.ignore();
     std::cout << std::endl;
 }
-
+/**
+ * Metodo para buscar un Autor registrado, caso contrario que no se encuentre dicho Autor se mostrara un mensaje
+ */
 void Sistema::buscarAutor() {
     std::string nombre;
     std::cout << "Ingresa el nombre del autor:";
@@ -504,7 +555,9 @@ void Sistema::buscarAutor() {
     std::cin.ignore();
     std::cout << std::endl;
 }
-
+/**
+ * Metodo para Registrar un Prestamo
+ */
 void Sistema::registrarPrestamo() {
     int codigoPrestamo = sigCodigoPrestamo();
 
@@ -513,6 +566,7 @@ void Sistema::registrarPrestamo() {
     do {
         std::cout << "Ingresa el codigo del libro:" << std::endl;
         std::getline(std::cin, codLibroRaw);
+        //Se valida que el codigo del Libro este ingresado de manera correcta, caso contrario se pide ingresar
         try {
 
             codLibro = std::stoi(codLibroRaw);
@@ -553,7 +607,9 @@ void Sistema::registrarPrestamo() {
     Prestamo p(codigoPrestamo, codLibro, dni, fechaPrestamo, "-", false);
     prestamos.push_back(p);
 }
-
+/**
+ * Se registra Devolucion a la hora de devolver un prestamo
+ */
 void Sistema::registrarDevolucion() {
     std::string dniRaw;
     int dni;
@@ -617,7 +673,9 @@ void Sistema::registrarDevolucion() {
     std::cin.ignore();
     std::cout << std::endl;
 }
-
+/**
+ * Metodo para ver que se registro el Cliente de manera correcta
+ */
 void Sistema::registrarCliente() {
     Cliente c = Cliente::crearClientePorConsola();
     clientes.push_back(c);
@@ -626,7 +684,9 @@ void Sistema::registrarCliente() {
     std::cin.ignore();
     std::cout << std::endl;
 }
-
+/**
+ * Metodo para ver que se registro el Autor de manera correcta
+ */
 void Sistema::registrarAutor() {
     Autor a = Autor::crearAutorPorConsola(sigCodigoAutor());
     autores.push_back(a);
@@ -635,7 +695,9 @@ void Sistema::registrarAutor() {
     std::cin.ignore();
     std::cout << std::endl;
 }
-
+/**
+ * Metodo para ver que se registro el libro de manera correcta
+ */
 void Sistema::registrarLibro() {
     Libro l = Libro::crearLibroPorConsola(sigCodigoLibro());
     libros.push_back(l);
@@ -644,7 +706,9 @@ void Sistema::registrarLibro() {
     std::cin.ignore();
     std::cout << std::endl;
 }
-
+/**
+ * Metodo para eliminar un cliente asi
+ */
 void Sistema::eliminarCliente() {
     std::string dniS;
     std::cout << "Ingresa el dni del usuario:" << std::endl;
@@ -669,7 +733,9 @@ void Sistema::eliminarCliente() {
     std::cin.ignore();
     std::cout << std::endl;
 }
-
+/*
+ * Metodo para Eliminar el Autor
+ */
 void Sistema::eliminarAutor() {
     std::string idS;
     std::cout << "Ingresa el id del autor:" << std::endl;
@@ -694,7 +760,9 @@ void Sistema::eliminarAutor() {
     std::cin.ignore();
     std::cout << std::endl;
 }
-
+/*
+ * Metodo para eliminar el Libro
+ */
 void Sistema::eliminarLibro() {
     std::string idS;
     std::cout << "Ingresa el id del libro:" << std::endl;
@@ -735,7 +803,9 @@ Categoria Sistema::obtenerCategoriaConId(int id) {
 
     throw ExcepcionCategoriaNoEncontrada("No se pudo obtener una categoria con id. En obtenerCategoriaConId");
 }
-
+/*
+ * Metodo para limipar toda la consola y mostrar en el Sistema el mensaje "Clear"
+ */
 void Sistema::limpiarConsola() {
 #if defined _WIN32
     system("cls");

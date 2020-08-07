@@ -54,14 +54,20 @@ void Libro::setCodigoCategoria(int codigoCategoria) {
     Libro::codigoCategoria = codigoCategoria;
 }
 
+/**
+ * Declaracion del metodo CrearLibroPorConsola
+ * @param codLibro al crear un libro por Consola se autoenumerara con un codigo correspondiente
+ * Retorna todos los valores introduccidos del libro nuevo
+ */
 Libro Libro::crearLibroPorConsola(int codLibro) {
     std::cout << "Creando un Libro." << std::endl;
 
     std::string nombreLibro;
     do {
         std::cout << "Ingresa el nombre del libro:" << std::endl;
+        //Se ingresa el nombre del Libro Nuevo
         std::getline(std::cin, nombreLibro);
-
+        //Se Verifica que el nombre ingresado del Libre no sea un valor Nulo o vacio
         if (!nombreLibro.empty()) break;
 
         std::cout << "Por favor, ingresa un nombre.";
@@ -69,9 +75,10 @@ Libro Libro::crearLibroPorConsola(int codLibro) {
 
     std::string fechaPublicacion;
     do {
+        //Se ingresa la fecha de publicacion del libro
         std::cout << "Ingresa la fecha de publicacion del libro:" << std::endl;
         std::getline(std::cin, fechaPublicacion);
-
+        //Se Verifica que el ingreso de la fecha no sea un valor Nulo o vacio
         if (!fechaPublicacion.empty()) break;
 
         std::cout << "Por favor, ingresa una fecha.";
@@ -81,9 +88,10 @@ Libro Libro::crearLibroPorConsola(int codLibro) {
     int codAutor;
     do {
         std::cout << "Ingresa el codigo del autor:" << std::endl;
+        //Se ingresa el codigo del Autor
         std::getline(std::cin, codAutorRaw);
         try {
-
+            //Se atrapa el codigo de Autor y se verifica que no este vacio, caso contrario pasa a la excepcion catch y se le pide que ingrese un numero
             codAutor = std::stoi(codAutorRaw);
             break;
 
@@ -96,6 +104,7 @@ Libro Libro::crearLibroPorConsola(int codLibro) {
     std::string codCatRaw;
     int codCat;
     do {
+        //Se pide ingresar el codigo de la categoria de Libro
         std::cout << "Ingresa el codigo de la categoria:" << std::endl;
         std::getline(std::cin, codCatRaw);
         try {
@@ -112,7 +121,10 @@ Libro Libro::crearLibroPorConsola(int codLibro) {
     Libro l(codLibro, nombreLibro, codAutor, fechaPublicacion, codCat);
     return l;
 }
-
+/**
+ * Metodo para dirigir libro a los archivos excel con sus datos respectivos
+ * @return Devuelve el valor de excel ya ingresado los datos correspondientes
+ */
 std::string Libro::toCSV() {
     std::string csv;
     std::stringstream gstream;
@@ -125,7 +137,11 @@ std::string Libro::toCSV() {
     csv = gstream.str();
     return csv;
 }
-
+/**
+ * Meotod para la verificacion del Libro enviado a archivo excel si los valores son aceptados de manera correcta
+ * @param csv valor que tendra los datos de libro ingresado
+ * @return Se ingresara de manera exitosa los datos del libro al excel, caos contrario se mostrara el error de dato ingresado
+ */
 Libro Libro::fromCSV(std::string csv) {
     std::string datos[5];
     int codigo, tema, n = 0;

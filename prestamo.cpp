@@ -1,4 +1,4 @@
-//
+    //
 // Created by Fernando on 04/06/2020.
 //
 #include <sstream>
@@ -47,7 +47,9 @@ void Prestamo::setFechaDevolucion(const std::string &fechaDevolucion) {
 bool Prestamo::isDevuelto() const {
     return devuelto;
 }
-
+/*
+ * Metodo para el ingreso de valores de Prestamo a los archivos excel
+ */
 std::string Prestamo::toCSV() {
     std::string csv;
     std::stringstream gstream;
@@ -62,7 +64,11 @@ std::string Prestamo::toCSV() {
     csv = gstream.str();
     return csv;
 }
-
+/**
+ * Metodo que verificara los valores ingresados en toCsv
+ * @param csv valor que contiene los valores de Prestamo
+ * @return  retornara el archivo actualizado con la categoria ingresado , caso contrario mostrara un mensaje señalando el error que tiene el ingreso de los datos
+ */
 Prestamo Prestamo::fromCSV(std::string csv) {
     std::string datos[6];
     int codigoPrestamo, codigoLibro, dni, n = 0;
