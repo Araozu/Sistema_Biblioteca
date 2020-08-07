@@ -8,8 +8,10 @@
 #include <sstream>
 
 class Autor: public Persona {
-public:
+private:
     int id;
+
+public:
     Autor(int id, std::string nombres, std::string apellidos);
     std::string toCSV() override;
     static Autor fromCSV(const std::string &csv);
